@@ -62,7 +62,7 @@
     a release of the turbine-parent POM.
   -->
   <scm>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/trunk/turbuine-parent</connection>
+    <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/trunk/turbine-parent</connection>
     <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/trunk/turbine-parent</developerConnection>
     <url>http://svn.apache.org/viewcvs/turbine/maven/trunk/turbine-parent</url>
   </scm>
