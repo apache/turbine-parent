@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.apache</groupId>
+    <artifactId>apache</artifactId>
+    <!-- Version 10 is broken; see https://issues.apache.org/jira/browse/MPOM-32 -->
+    <version>9</version>
+  </parent>
+  <groupId>org.apache.turbine</groupId>
+  <artifactId>turbine-parent</artifactId>
+  <packaging>pom</packaging>
+
+  <!-- TODO: dummy version. In Maven 2.1, this will be auto-versioned being a generic parent -->
+  <version>1-SNAPSHOT</version>
+  <name>Turbine POM</name>
+  <description>
+    The parent POM for the Apache Turbine and Fulcrum project.
+  </description>  
+  <url>http://turbine.apache.org</url>
+  <inceptionYear>2011</inceptionYear>
+
+  <issueManagement>
+    <system>jira</system>
+    <url>http://issues.apache.org/jira/browse/TRB</url>
+  </issueManagement>
+
+  <distributionManagement>
+    <!--
+      This POM's parent POM (the Apache root POM) provides repositories. Unfortunately,
+      this allows for accidental deployments. So we disable them here by providing
+      a dummy repository. Use "mvn -Prc deploy" (Apache snapshot repository) or
+      "mvn -Prelease deploy" (Apache release repository), if you really want to deploy.
+    -->
+    <repository>
+      <id>dummy</id>
+      <name>Dummy to avoid accidental deploys</name>
+      <url/>
+    </repository>
+  </distributionManagement>
+
+  <!--
+    This section *must* be overwritten by subprojects. It is only to allow
+    a release of the fulcrum-parent POM.
+  -->
+  <scm>
+    <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/trunk/turbuine-parent</connection>
+    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/trunk/turbine-parent</developerConnection>
+    <url>http://svn.apache.org/viewcvs/turbine/maven/trunk/turbine-parent</url>
+  </scm>
+
+  <mailingLists>
+    <mailingList>
+      <name>Turbine Dev List</name>
+      <subscribe>dev-subscribe@turbine.apache.org</subscribe>
+      <unsubscribe>dev-unsubscribe@turbine.apache.org</unsubscribe>
+      <post>dev@turbine.apache.org</post>
+      <archive>http://mail-archives.apache.org/mod_mbox/turbine-dev/</archive>
+    </mailingList>
+    <mailingList>
+      <name>Turbine User List</name>
+      <subscribe>user-subscribe@turbine.apache.org</subscribe>
+      <unsubscribe>user-unsubscribe@turbine.apache.org</unsubscribe>
+      <post>user@turbine.apache.org</post>
+      <archive>http://mail-archives.apache.org/mod_mbox/turbine-user/</archive>
+    </mailingList>
+  </mailingLists>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>${basedir}</directory>
+        <targetPath>META-INF</targetPath>
+        <includes>
+          <include>NOTICE.txt</include>
+          <include>LICENSE.txt</include>
+        </includes>
+      </resource>
+    </resources>
+    <pluginManagement>
+      <plugins>
+        <!-- org.apache.maven.plugins, alpha order by artifact id -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.6</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.2.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.4.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <source>${maven.compile.source}</source>
+            <target>${maven.compile.target}</target>
+            <encoding>${turbine.encoding}</encoding>
+            <fork>${turbine.compiler.fork}</fork>
+            <compilerVersion>${turbine.compiler.compilerVersion}</compilerVersion>
+            <executable>${turbine.compiler.javac}</executable>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.4</version>
+        </plugin>        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.3.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.3.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${turbine.javadoc.version}</version>
+          <configuration>
+            <!-- keep only errors and warnings -->
+            <quiet>true</quiet>
+            <encoding>${turbine.encoding}</encoding>
+            <docEncoding>${turbine.docEncoding}</docEncoding>
+            <links>
+              <link>${turbine.javadoc.java.link}</link>
+              <link>${turbine.javadoc.javaee.link}</link>
+            </links>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+              </manifest>
+            </archive>
+        </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.2.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.5</version>
+          <configuration>
+            <encoding>${turbine.resourceEncoding}</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>2.1.2</version>
+          <configuration>
+            <archive>
+              <manifest>
+                  <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                  <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${turbine.surefire.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <!-- org.apache.maven.plugins, alpha order by artifact id -->
+      <plugin>
+        <!--
+          - Copy LICENSE.txt and NOTICE.txt so that they are included
+          - in the -javadoc jar file for the component.
+          -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>javadoc.resources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <copy todir="${project.build.directory}/apidocs/META-INF">
+                  <fileset dir="${basedir}">
+                    <include name="LICENSE.txt"/>
+                    <include name="NOTICE.txt"/>
+                  </fileset>
+                </copy>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <!-- generate the Eclipse project files -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.8</version>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>false</downloadJavadocs>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- generate the IntelliJ project files -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-idea-plugin</artifactId>
+        <version>2.2</version>        
+        <configuration>
+          <jdkLevel>${maven.compile.source}</jdkLevel>
+          <downloadSources>true</downloadSources>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Specification-Title>${project.name}</Specification-Title>
+              <Specification-Version>${project.version}</Specification-Version>
+              <Specification-Vendor>${project.organization.name}</Specification-Vendor>
+              <Implementation-Title>${project.name}</Implementation-Title>
+              <Implementation-Version>${project.version}</Implementation-Version>
+              <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+              <Implementation-Vendor-Id>org.apache</Implementation-Vendor-Id>
+              <Implementation-Build>${implementation.build}</Implementation-Build>              
+              <X-Compile-Source-JDK>${maven.compile.source}</X-Compile-Source-JDK>
+              <X-Compile-Target-JDK>${maven.compile.target}</X-Compile-Target-JDK>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <jvm>${turbine.surefire.java}</jvm>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- attach the source code turbine.n building a jar -->
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>create-source-jar</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <phase>package</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <!-- N.B. plugins defined here in the <reporting> section ignore what's defined in <pluginManagement>
+         in the <build> section above, so we have to define the versions here. -->
+    <plugins>
+      <!-- org.apache.maven.plugins, alpha order by artifact id -->
+      <plugin>
+        <!-- generate the changes report from changes.xml -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <xmlPath>${basedir}/xdocs/changes.xml</xmlPath>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>changes-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <threshold>Normal</threshold>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${turbine.javadoc.version}</version>
+        <configuration>
+          <!-- keep only errors and warnings -->
+          <quiet>true</quiet>
+          <source>${maven.compile.source}</source>
+          <encoding>${turbine.encoding}</encoding>
+          <docEncoding>${turbine.docEncoding}</docEncoding>
+          <linksource>true</linksource>
+          <links>
+            <link>${turbine.javadoc.java.link}</link>
+            <link>${turbine.javadoc.javaee.link}</link>
+          </links>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>${turbine.jxr.version}</version>
+      </plugin>
+      <plugin>
+        <!-- generate the PMD reports -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <minimumTokens>200</minimumTokens>
+          <targetJdk>${maven.compile.source}</targetJdk>
+          <rulesets>
+            <ruleset>/rulesets/basic.xml</ruleset>
+            <ruleset>/rulesets/finalizers.xml</ruleset>
+            <ruleset>/rulesets/imports.xml</ruleset>
+            <ruleset>/rulesets/unusedcode.xml</ruleset>
+          </rulesets>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>${turbine.project-info.version}</version>
+        <configuration>
+          <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <!-- Exclude the navigation file for Maven 1 sites
+                   and the changes file used by the changes-plugin,
+                   as they interfere with the site generation. -->
+          <moduleExcludes>
+            <xdoc>navigation.xml,changes.xml</xdoc>
+          </moduleExcludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>${turbine.surefire.version}</version>
+      </plugin>
+      <plugin>
+        <!-- get test coverage for regression tests -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.5.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+        <version>2.0-beta-2</version>
+      </plugin>
+      <plugin>
+        <!-- check the Apache Licence in all source files -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>rat-maven-plugin</artifactId>
+        <version>1.0-alpha-3</version>
+      </plugin>
+      <plugin>
+        <!-- generate the tag list report -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <version>2.1</version>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <profiles>
+    <profile>
+      <id>ci</id>
+      <distributionManagement>
+        <repository>
+          <id>apache.snapshots</id>
+          <name>Apache Development Snapshot Repository</name>
+          <url>${turbine.deployment.protocol}://people.apache.org/www/people.apache.org/repo/m2-snapshot-repository</url>
+        </repository>
+        <snapshotRepository>
+          <id>apache.snapshots</id>
+          <name>Apache Development Snapshot Repository</name>
+          <url>${turbine.deployment.protocol}://people.apache.org/www/people.apache.org/repo/m2-snapshot-repository</url>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
+
+    <profile>
+      <id>release</id>
+      <distributionManagement>
+        <repository>
+          <id>apache.releases</id>
+          <name>Apache Release Distribution Repository</name>
+          <url>${turbine.deployment.protocol}://people.apache.org/www/people.apache.org/repo/m2-ibiblio-rsync-repository</url>
+        </repository>
+      </distributionManagement>
+      <build>
+        <plugins>
+          <!-- We want to sign the artifact, the POM, and all attached artifacts -->
+          <plugin>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <configuration>
+              <passphrase>${gpg.passphrase}</passphrase>
+            </configuration>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-install-plugin</artifactId>
+            <configuration>
+              <createChecksum>true</createChecksum>
+            </configuration>
+          </plugin>
+          <plugin>
+            <artifactId>maven-release-plugin</artifactId>
+            <configuration>
+              <!-- Pass these arguments to the deploy plugin. -->
+              <arguments>-Prelease</arguments>
+            </configuration>
+          </plugin>
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>create-javadoc-jar</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <phase>package</phase>
+                <configuration>
+                  <source>${maven.compile.source}</source>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>rc</id>
+      <distributionManagement>
+        <repository>
+          <id>apache.snapshots</id>
+          <name>Apache Development Snapshot Repository</name>
+          <url>${turbine.deployment.protocol}://people.apache.org/www/turbine.apache.org/builds/turbine/fulcrum/${turbine.componentid}/${turbine.release.version}/${turbine.rc.version}/staged</url>
+        </repository>
+        <snapshotRepository>
+          <id>apache.snapshots</id>
+          <name>Apache Development Snapshot Repository</name>
+          <url>${turbine.deployment.protocol}://people.apache.org/www/people.apache.org/repo/m2-snapshot-repository</url>
+        </snapshotRepository>
+      </distributionManagement>
+      <build>
+        <plugins>
+          <!-- We want to sign the artifact, the POM, and all attached artifacts -->
+          <plugin>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.4</version>
+            <configuration>
+              <passphrase>${gpg.passphrase}</passphrase>
+            </configuration>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-install-plugin</artifactId>
+            <configuration>
+              <createChecksum>true</createChecksum>
+            </configuration>
+          </plugin>
+          <plugin>
+            <artifactId>maven-site-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>site</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-release-plugin</artifactId>
+            <configuration>
+              <!-- Pass these arguments to the deploy plugin. -->
+              <arguments>-Prc</arguments>
+            </configuration>
+          </plugin>
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>create-javadoc-jar</id>
+                <goals>
+                  <goal>javadoc</goal>
+                  <goal>jar</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <source>${maven.compile.source}</source>
+             </configuration>            
+          </plugin>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>attached</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <properties>
+
+    <!-- Default configuration for compiler source and target JVM -->
+    <maven.compile.source>1.6</maven.compile.source>
+    <maven.compile.target>1.6</maven.compile.target>
+
+    <!-- configuration bits for cutting a release candidate, must be overridden by components -->
+    <!-- must agree with project.version above -->
+    <turbine.release.version>1</turbine.release.version>
+    <turbine.rc.version>RC1</turbine.rc.version>
+
+    <!-- Compiler and surefire plugin settings for "java" profiles -->
+    <turbine.compiler.fork>false</turbine.compiler.fork>
+    <turbine.compiler.compilerVersion>1.6</turbine.compiler.compilerVersion>
+    <turbine.compiler.javac>${JAVA_HOME}/bin/javac</turbine.compiler.javac>
+    <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
+
+    <!-- Plugin versions (allows same value in reporting and build sections) -->
+    <turbine.surefire.version>2.9</turbine.surefire.version>
+    <turbine.surefire-report.version>2.9</turbine.surefire-report.version>
+    <turbine.javadoc.version>2.8</turbine.javadoc.version>
+    <turbine.changes.version>2.6</turbine.changes.version>   
+    <turbine.jxr.version>2.3</turbine.jxr.version>
+    <turbine.project-info.version>2.4</turbine.project-info.version>
+
+    <!-- Fulcrum Component Id -->
+    <turbine.componentid>${project.artifactId}</turbine.componentid>
+
+    <!--
+      Make the deployment protocol pluggable. This allows to switch to
+      other protocols like scpexe, turbine.ch some users prefer over scp.
+    -->
+    <turbine.deployment.protocol>scp</turbine.deployment.protocol>
+
+    <!--
+      Encoding of Java source files: Make sure, that the compiler and
+      the javadoc generator use the right encoding. Subprojects may
+      overwrite this, if they are using another encoding.
+    -->
+    <turbine.encoding>UTF-8</turbine.encoding>
+    <turbine.docEncoding>${turbine.encoding}</turbine.docEncoding>
+    <turbine.resourceEncoding>${turbine.encoding}</turbine.resourceEncoding>
+
+    <!-- Define encoding for filtering -->
+    <project.build.sourceEncoding>${turbine.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${turbine.encoding}</project.reporting.outputEncoding>
+
+    <!-- Javadoc link to Java API.  Default is Java 1.6; components can override to other versions -->
+    <turbine.javadoc.java.link>http://download.oracle.com/javase/6/docs/api/</turbine.javadoc.java.link>
+    <turbine.javadoc.javaee.link>http://download.oracle.com/javaee/6/api/</turbine.javadoc.javaee.link>
+
+    <!-- build meta inf -->
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
+    <implementation.build>${scmBranch}@r${buildNumber};${maven.build.timestamp}</implementation.build>
+
+    <!-- maven-surefire-plugin -->
+    <test>**/*Test</test>
+
+  </properties>
+
+</project>
