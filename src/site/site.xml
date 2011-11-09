@@ -17,7 +17,7 @@
  specific language governing permissions and limitations
  under the License.
 -->
-<project name="Apache Turbine Fulcrum">
+<project name="Apache Turbine">
   <bannerLeft>
     <name>Apache Turbine</name>
     <alt>Apache Turbine</alt>
