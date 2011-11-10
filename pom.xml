@@ -192,6 +192,18 @@
     <plugins>
       <!-- org.apache.maven.plugins, alpha order by artifact id -->
       <plugin>
+        <!-- build the source and binary distribution packages -->
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>bin</descriptorRef>
+            <descriptorRef>project</descriptorRef>
+            <descriptorRef>src</descriptorRef>
+          </descriptorRefs>
+          <tarLongFileMode>gnu</tarLongFileMode>
+        </configuration>
+      </plugin>      
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
       </plugin>
