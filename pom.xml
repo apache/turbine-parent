@@ -446,6 +446,7 @@
             <configuration>
               <!-- Pass these arguments to the deploy plugin. -->
               <arguments>-Prelease</arguments>
+              <mavenExecutorId>forked-path</mavenExecutorId>              
             </configuration>
           </plugin>
           <plugin>
