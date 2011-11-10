@@ -523,6 +523,7 @@
             <configuration>
               <!-- Pass these arguments to the deploy plugin. -->
               <arguments>-Prc</arguments>
+              <mavenExecutorId>forked-path</mavenExecutorId>
             </configuration>
           </plugin>
           <plugin>
