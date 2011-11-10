@@ -473,12 +473,12 @@
         <repository>
           <id>apache.releases</id>
           <name>Apache Turbine Release Candidate Staging Repository</name>
-          <url>${turbine.deployment.protocol}://people.apache.org/www/turbine.apache.org/builds/turbine/core/${turbine.release.version}/${turbine.rc.version}/staged</url>
+          <url>${turbine.deployment.protocol}://people.apache.org/www/turbine.apache.org/builds/turbine/maven/turbine-parent/${turbine.release.version}/${turbine.rc.version}/staged</url>
         </repository>
         <site>
           <id>apache.website</id>
           <name>Apache Turbine Release Candidate Staging Site</name>
-          <url>${turbine.deployment.protocol}://people.apache.org/www/turbine.apache.org/builds/turbine/core/${turbine.release.version}/${turbine.rc.version}/site</url>
+          <url>${turbine.deployment.protocol}://people.apache.org/www/turbine.apache.org/builds/turbine/maven/turbine-parent/${turbine.release.version}/${turbine.rc.version}/site</url>
         </site>
       </distributionManagement>
       <build>
