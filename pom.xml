@@ -22,8 +22,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <!-- Version 10 is broken; see https://issues.apache.org/jira/browse/MPOM-32 -->
-    <version>9</version>
+    <version>11</version>
   </parent>
   <groupId>org.apache.turbine</groupId>
   <artifactId>turbine-parent</artifactId>
@@ -38,6 +37,11 @@
   <url>http://turbine.apache.org</url>
   <inceptionYear>2011</inceptionYear>
 
+  <!-- Now required by versions plugin -->
+  <prerequisites>
+    <maven>2.2.1</maven>
+  </prerequisites>
+  
   <issueManagement>
     <system>jira</system>
     <url>http://issues.apache.org/jira/browse/TRB</url>
@@ -89,18 +93,8 @@
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.2.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>2.4.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.3.2</version>
+          <version>2.5.1</version>
           <configuration>
             <source>${maven.compile.source}</source>
             <target>${maven.compile.target}</target>
@@ -109,26 +103,6 @@
             <compilerVersion>${turbine.compiler.compilerVersion}</compilerVersion>
             <executable>${turbine.compiler.javac}</executable>
           </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.7</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.4</version>
-        </plugin>        
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.3.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>2.3.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -153,21 +127,11 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>2.2.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
           <version>2.5</version>
           <configuration>
             <encoding>${turbine.resourceEncoding}</encoding>
           </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -198,10 +162,6 @@
           <tarLongFileMode>gnu</tarLongFileMode>
         </configuration>
       </plugin>      
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
       <plugin>
         <!-- generate the Eclipse project files -->
         <groupId>org.apache.maven.plugins</groupId>
@@ -248,19 +208,6 @@
         <configuration>
           <jvm>${turbine.surefire.java}</jvm>
         </configuration>
-      </plugin>
-      <plugin>
-        <!-- attach the source code turbine.n building a jar -->
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>create-source-jar</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-            <phase>package</phase>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
@@ -341,7 +288,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.0</version>
+        <version>3.1</version>
         <configuration>
           <!-- Exclude the navigation file for Maven 1 sites
                    and the changes file used by the changes-plugin,
@@ -569,12 +516,12 @@
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.surefire.version>2.9</turbine.surefire.version>
-    <turbine.surefire-report.version>2.9</turbine.surefire-report.version>
-    <turbine.javadoc.version>2.8</turbine.javadoc.version>
+    <turbine.surefire.version>2.12</turbine.surefire.version>
+    <turbine.surefire-report.version>2.12</turbine.surefire-report.version>
+    <turbine.javadoc.version>2.8.1</turbine.javadoc.version>
     <turbine.changes.version>2.6</turbine.changes.version>   
     <turbine.jxr.version>2.3</turbine.jxr.version>
-    <turbine.project-info.version>2.4</turbine.project-info.version>
+    <turbine.project-info.version>2.5</turbine.project-info.version>
 
     <!--
       Make the deployment protocol pluggable. This allows to switch to

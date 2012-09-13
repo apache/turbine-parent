@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -19,12 +19,20 @@
 -->
 <document>
   <properties>
-    <title>Fulcrum Parent POM</title>
+    <title>Turbine Parent POM</title>
     <author email="siegfried.goeschl@it20one.at">Siegfried Goeschl</author>
   </properties>
 
   <body>
-    <release version="1-SNAPSHOT" date="as in SVN">
+    <release version="2" date="as in SVN">
+      <action dev="tv" type="update" date="2012-09-13">
+        Move changelog to standard location
+      </action>      
+      <action dev="tv" type="update" date="2012-09-13">
+        Update Apache Parent POM to version 11 and remove all duplicate settings
+      </action>      
+    </release>
+    <release version="1-SNAPSHOT" date="unreleased">
       <action dev="sgoeschl" type="update" date="2011-11-07">
         Removed site content since that conflicts with the Turbine site.
       </action>      
