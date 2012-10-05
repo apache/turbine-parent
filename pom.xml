@@ -68,7 +68,7 @@
   <scm>
     <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</connection>
     <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</developerConnection>
-    <url>http://svn.apache.org/viewcvs/turbine/maven/trunk/turbine-parent</url>
+    <url>http://svn.apache.org/viewcvs/turbine/maven/turbine-parent/trunk/</url>
   </scm>
 
   <mailingLists>
