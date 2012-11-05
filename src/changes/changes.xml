@@ -25,6 +25,12 @@
 
   <body>
     <release version="2" date="as in SVN">
+      <action dev="tv" type="add" date="2012-11-05">
+        Add customization of apache-release profile
+      </action>      
+      <action dev="tv" type="remove" date="2012-11-05">
+        Remove old release and rc profiles
+      </action>      
       <action dev="tv" type="update" date="2012-09-13">
         Move changelog to standard location
       </action>      
