@@ -347,155 +347,52 @@
       </distributionManagement>
     </profile>
 
+    <!-- Allow overriding the target repository (Thanks to Apache Commons) -->
     <profile>
-      <id>release</id>
-      <distributionManagement>
-        <repository>
-          <id>apache.releases</id>
-          <name>Apache Release Distribution Repository</name>
-          <url>${turbine.deployment.protocol}://people.apache.org/www/people.apache.org/repo/m2-ibiblio-rsync-repository</url>
-        </repository>
-      </distributionManagement>
-      <build>
-        <plugins>
-          <!-- We want to sign the artifact, the POM, and all attached artifacts -->
-          <plugin>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <configuration>
-              <passphrase>${gpg.passphrase}</passphrase>
-            </configuration>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <artifactId>maven-install-plugin</artifactId>
-            <configuration>
-              <createChecksum>true</createChecksum>
-            </configuration>
-          </plugin>
-          <plugin>
-            <artifactId>maven-release-plugin</artifactId>
-            <configuration>
-              <!-- Pass these arguments to the deploy plugin. -->
-              <arguments>-Prelease</arguments>
-              <mavenExecutorId>forked-path</mavenExecutorId>              
-            </configuration>
-          </plugin>
-          <plugin>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>create-javadoc-jar</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-                <phase>package</phase>
-                <configuration>
-                  <source>${maven.compile.source}</source>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
+      <id>test-deploy</id>
+      <properties>
+        <altDeploymentRepository>id::default::file:target/deploy</altDeploymentRepository>
+      </properties>
     </profile>
 
+    <!-- profile to update the Apache parent pom profile of the same name 
+        to better suit the requirements of Apache Turbine. (Thanks to Apache Commons) -->
     <profile>
-      <id>rc</id>
-      <distributionManagement>
-        <repository>
-          <id>apache.releases</id>
-          <name>Apache Turbine Release Candidate Staging Repository</name>
-          <url>${turbine.deployment.protocol}://people.apache.org/www/turbine.apache.org/builds/turbine/maven/turbine-parent/${turbine.release.version}/${turbine.rc.version}/staged</url>
-        </repository>
-        <site>
-          <id>apache.website</id>
-          <name>Apache Turbine Release Candidate Staging Site</name>
-          <url>${turbine.deployment.protocol}://people.apache.org/www/turbine.apache.org/builds/turbine/maven/turbine-parent/${turbine.release.version}/${turbine.rc.version}/site</url>
-        </site>
-      </distributionManagement>
-      <build>
-        <plugins>
-          <!-- We want to sign the artifact, the POM, and all attached artifacts -->
-          <plugin>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.4</version>
-            <configuration>
-              <passphrase>${gpg.passphrase}</passphrase>
-            </configuration>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <artifactId>maven-install-plugin</artifactId>
-            <configuration>
-              <createChecksum>true</createChecksum>
-            </configuration>
-          </plugin>
-          <plugin>
-            <artifactId>maven-site-plugin</artifactId>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>site</goal>
-                </goals>
-                <phase>package</phase>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <artifactId>maven-release-plugin</artifactId>
-            <configuration>
-              <!-- Pass these arguments to the deploy plugin. -->
-              <arguments>-Prc</arguments>
-              <mavenExecutorId>forked-path</mavenExecutorId>
-            </configuration>
-          </plugin>
-          <plugin>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>create-javadoc-jar</id>
-                <goals>
-                  <goal>javadoc</goal>
-                  <goal>jar</goal>
-                </goals>
-                <phase>package</phase>
-              </execution>
-            </executions>
-            <configuration>
-              <source>${maven.compile.source}</source>
-             </configuration>            
-          </plugin>
-          <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>make-assembly</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>single</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
+        <id>apache-release</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <configuration>
+                        <releaseProfiles>apache-release</releaseProfiles>
+                        <mavenExecutorId>forked-path</mavenExecutorId>              
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <configuration>
+                        <createChecksum>true</createChecksum>
+                    </configuration>
+                </plugin>
+                <!--  plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>create-javadoc-jar</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <phase>package</phase>
+                            <configuration>
+                                <source>${maven.compile.source}</source>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin -->
+            </plugins>
+        </build>
     </profile>
+
   </profiles>
 
   <properties>
@@ -506,7 +403,7 @@
 
     <!-- configuration bits for cutting a release candidate, must be overridden by components -->
     <!-- must agree with project.version above -->
-    <turbine.release.version>1</turbine.release.version>
+    <turbine.release.version>2</turbine.release.version>
     <turbine.rc.version>RC1</turbine.rc.version>
 
     <!-- Compiler and surefire plugin settings for "java" profiles -->
