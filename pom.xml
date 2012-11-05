@@ -29,7 +29,7 @@
   <packaging>pom</packaging>
 
   <!-- TODO: dummy version. In Maven 2.1, this will be auto-versioned being a generic parent -->
-  <version>2</version>
+  <version>3-SNAPSHOT</version>
   <name>Turbine POM</name>
   <description>
     The parent POM for the Apache Turbine and Fulcrum project.
@@ -52,9 +52,9 @@
     a release of the turbine-parent POM.
   -->
   <scm>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/turbine-parent/tags/TURBINE_PARENT_POM_2</connection>
-    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/tags/TURBINE_PARENT_POM_2</developerConnection>
-    <url>http://svn.apache.org/viewcvs/turbine/maven/turbine-parent/tags/TURBINE_PARENT_POM_2</url>
+    <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</connection>
+    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</developerConnection>
+    <url>http://svn.apache.org/viewcvs/turbine/maven/turbine-parent/trunk/</url>
   </scm>
 
   <mailingLists>
