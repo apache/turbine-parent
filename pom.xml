@@ -47,20 +47,6 @@
     <url>http://issues.apache.org/jira/browse/TRB</url>
   </issueManagement>
 
-  <distributionManagement>
-    <!--
-      This POM's parent POM (the Apache root POM) provides repositories. Unfortunately,
-      this allows for accidental deployments. So we disable them here by providing
-      a dummy repository. Use "mvn -Prc deploy" (Apache snapshot repository) or
-      "mvn -Prelease deploy" (Apache release repository), if you really want to deploy.
-    -->
-    <repository>
-      <id>dummy</id>
-      <name>Dummy to avoid accidental deploys</name>
-      <url />
-    </repository>
-  </distributionManagement>
-
   <!--
     This section *must* be overwritten by subprojects. It is only to allow
     a release of the turbine-parent POM.

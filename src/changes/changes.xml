@@ -25,6 +25,10 @@
 
   <body>
     <release version="2" date="2012-11-05">
+      <action dev="tv" type="remove" date="2012-11-05">
+        Remove definition of dummy repository as Nexus now is supposed to handle 
+        actual promotion of artifacts.
+      </action>      
       <action dev="tv" type="add" date="2012-11-05">
         Add customization of apache-release profile
       </action>      
