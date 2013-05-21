@@ -477,7 +477,7 @@
     <implementation.build>${scmBranch}@r${buildNumber};${maven.build.timestamp}</implementation.build>
 
     <!-- scm publish plugin configuration -->
-    <turbine.site.cache>${user.home}/commons-sites</turbine.site.cache>
+    <turbine.site.cache>${user.home}/turbine-sites</turbine.site.cache>
     <!-- value modules can override it -->
     <turbine.site.path>${project.artifactId}</turbine.site.path>
 
