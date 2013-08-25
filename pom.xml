@@ -80,7 +80,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.0</version>
+          <version>3.1</version>
           <configuration>
             <source>${maven.compile.source}</source>
             <target>${maven.compile.target}</target>
@@ -445,15 +445,15 @@
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.surefire.version>2.13</turbine.surefire.version>
-    <turbine.surefire-report.version>2.13</turbine.surefire-report.version>
+    <turbine.surefire.version>2.14.1</turbine.surefire.version>
+    <turbine.surefire-report.version>2.14.1</turbine.surefire-report.version>
     <turbine.javadoc.version>2.9</turbine.javadoc.version>
     <turbine.rat.version>0.8</turbine.rat.version>
-    <turbine.changes.version>2.8</turbine.changes.version>   
+    <turbine.changes.version>2.9</turbine.changes.version>   
     <turbine.jxr.version>2.3</turbine.jxr.version>
-    <turbine.project-info.version>2.6</turbine.project-info.version>
+    <turbine.project-info.version>2.7</turbine.project-info.version>
     <turbine.wagon-ssh.version>2.3</turbine.wagon-ssh.version>
-    <turbine.site-plugin.version>3.2</turbine.site-plugin.version>
+    <turbine.site-plugin.version>3.3</turbine.site-plugin.version>
 
     <!--
       Encoding of Java source files: Make sure, that the compiler and
