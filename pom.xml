@@ -124,7 +124,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>${turbine.site-plugin.version}</version>
+          <version>${turbine.site.version}</version>
           <configuration>
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
@@ -453,7 +453,7 @@
     <turbine.jxr.version>2.3</turbine.jxr.version>
     <turbine.project-info.version>2.7</turbine.project-info.version>
     <turbine.wagon-ssh.version>2.3</turbine.wagon-ssh.version>
-    <turbine.site-plugin.version>3.3</turbine.site-plugin.version>
+    <turbine.site.version>3.3</turbine.site.version>
 
     <!--
       Encoding of Java source files: Make sure, that the compiler and
