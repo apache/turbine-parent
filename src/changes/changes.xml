@@ -24,7 +24,9 @@
   </properties>
 
   <body>
-    <release version="3" date="in SVN">
+    <release version="4" date="in SVN">
+    </release>
+    <release version="3" date="2013-09-03">
       <action dev="tv" type="update" date="2013-08-25">
         Update plugins
         - maven-compiler-plugin from 3.0 to 3.1
