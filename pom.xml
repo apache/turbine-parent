@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>13</version>
+    <version>16</version>
   </parent>
   <groupId>org.apache.turbine</groupId>
   <artifactId>turbine-parent</artifactId>
@@ -54,7 +54,7 @@
   <scm>
     <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</connection>
     <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</developerConnection>
-    <url>http://svn.apache.org/viewvc/turbine/maven/turbine-parent/trunk/</url>
+    <url>http://svn.apache.org/viewcvs/turbine/maven/turbine-parent/trunk/</url>
   </scm>
 
   <mailingLists>
@@ -133,7 +133,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>2.2.1</version>
+          <version>2.4</version>
           <configuration>
             <archive>
               <manifest>
@@ -163,7 +163,7 @@
         <!-- generate the Eclipse project files -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
-        <version>2.8</version>
+        <version>2.9</version>
         <configuration>
           <downloadSources>true</downloadSources>
           <downloadJavadocs>false</downloadJavadocs>
@@ -173,7 +173,7 @@
         <!-- generate the IntelliJ project files -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-idea-plugin</artifactId>
-        <version>2.2</version>        
+        <version>2.2.1</version>        
         <configuration>
           <jdkLevel>${maven.compile.source}</jdkLevel>
           <downloadSources>true</downloadSources>
@@ -210,7 +210,7 @@
       <plugin> <!-- Thanks to Apache Commons -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-publish-plugin</artifactId>
-        <version>1.0-beta-2</version>
+        <version>1.1</version>
         <configuration>
           <content>${project.reporting.outputDirectory}</content>
           <pubScmUrl>scm:svn:${turbine.scmPubUrl}</pubScmUrl>
@@ -251,7 +251,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.0.0</version>
         <configuration>
           <threshold>Normal</threshold>
         </configuration>
@@ -283,15 +283,17 @@
         <!-- generate the PMD reports -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>2.5</version>
+        <version>3.2</version>
         <configuration>
           <minimumTokens>200</minimumTokens>
+          <!--linkXref>true</linkXref-->
           <targetJdk>${maven.compile.source}</targetJdk>
           <rulesets>
-            <ruleset>/rulesets/basic.xml</ruleset>
-            <ruleset>/rulesets/finalizers.xml</ruleset>
-            <ruleset>/rulesets/imports.xml</ruleset>
-            <ruleset>/rulesets/unusedcode.xml</ruleset>
+          <!-- comment default rule sets: basic, impors, unusedcode -->
+            <ruleset>/rulesets/java/basic.xml</ruleset>
+            <ruleset>/rulesets/java/finalizers.xml</ruleset>
+            <ruleset>/rulesets/java/imports.xml</ruleset>
+            <ruleset>/rulesets/java/unusedcode.xml</ruleset>
           </rulesets>
         </configuration>
       </plugin>
@@ -326,12 +328,12 @@
         <!-- get test coverage for regression tests -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
-        <version>2.5.2</version>
+        <version>2.6</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
-        <version>2.0-beta-2</version>
+        <version>2.0</version>
       </plugin>
       <plugin>
         <!-- check the Apache Licence in all source files -->
@@ -343,7 +345,7 @@
         <!-- generate the tag list report -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
-        <version>2.1</version>
+        <version>2.4</version>
       </plugin>
     </plugins>
   </reporting>
@@ -435,25 +437,25 @@
   <properties>
 
     <!-- Default configuration for compiler source and target JVM -->
-    <maven.compile.source>1.6</maven.compile.source>
-    <maven.compile.target>1.6</maven.compile.target>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
 
     <!-- Compiler and surefire plugin settings for "java" profiles -->
     <turbine.compiler.fork>false</turbine.compiler.fork>
-    <turbine.compiler.compilerVersion>1.6</turbine.compiler.compilerVersion>
+    <turbine.compiler.compilerVersion>1.7</turbine.compiler.compilerVersion>
     <turbine.compiler.javac>${JAVA_HOME}/bin/javac</turbine.compiler.javac>
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.surefire.version>2.14.1</turbine.surefire.version>
-    <turbine.surefire-report.version>2.14.1</turbine.surefire-report.version>
-    <turbine.javadoc.version>2.9</turbine.javadoc.version>
-    <turbine.rat.version>0.8</turbine.rat.version>
-    <turbine.changes.version>2.9</turbine.changes.version>   
-    <turbine.jxr.version>2.3</turbine.jxr.version>
-    <turbine.project-info.version>2.7</turbine.project-info.version>
-    <turbine.wagon-ssh.version>2.3</turbine.wagon-ssh.version>
-    <turbine.site.version>3.3</turbine.site.version>
+    <turbine.surefire.version>2.17</turbine.surefire.version>
+    <turbine.surefire-report.version>2.17</turbine.surefire-report.version>
+    <turbine.javadoc.version>2.9.1</turbine.javadoc.version>
+    <turbine.rat.version>0.11</turbine.rat.version>
+    <turbine.changes.version>2.11</turbine.changes.version>   
+    <turbine.jxr.version>2.5</turbine.jxr.version>
+    <turbine.project-info.version>2.8</turbine.project-info.version>
+    <turbine.wagon-ssh.version>2.8</turbine.wagon-ssh.version>
+    <turbine.site.version>3.4</turbine.site.version>
 
     <!--
       Encoding of Java source files: Make sure, that the compiler and
