@@ -54,7 +54,7 @@
   <scm>
     <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</connection>
     <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</developerConnection>
-    <url>http://svn.apache.org/viewcvs/turbine/maven/turbine-parent/trunk/</url>
+    <url>http://svn.apache.org/viewvc/turbine/maven/turbine-parent/trunk/</url>
   </scm>
 
   <mailingLists>
@@ -210,7 +210,6 @@
       <plugin> <!-- Thanks to Apache Commons -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-publish-plugin</artifactId>
-        <version>1.1</version>
         <configuration>
           <content>${project.reporting.outputDirectory}</content>
           <pubScmUrl>scm:svn:${turbine.scmPubUrl}</pubScmUrl>
