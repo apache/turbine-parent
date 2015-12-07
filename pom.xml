@@ -436,8 +436,8 @@
   <properties>
 
     <!-- Default configuration for compiler source and target JVM -->
-    <maven.compiler.source>1.6</maven.compiler.source>
-    <maven.compiler.target>1.6</maven.compiler.target>
+    <maven.compile.source>1.6</maven.compile.source>
+    <maven.compile.target>1.6</maven.compile.target>
 
     <!-- Compiler and surefire plugin settings for "java" profiles -->
     <turbine.compiler.fork>false</turbine.compiler.fork>
