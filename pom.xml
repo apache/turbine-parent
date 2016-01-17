@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>16</version>
+    <version>17</version>
   </parent>
   <groupId>org.apache.turbine</groupId>
   <artifactId>turbine-parent</artifactId>
@@ -39,7 +39,7 @@
 
   <!-- Now required by versions plugin -->
   <prerequisites>
-    <maven>2.2.1</maven>
+    <maven>3.0.1</maven>
   </prerequisites>
   
   <issueManagement>
@@ -80,10 +80,10 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.1</version>
+          <version>3.3</version>
           <configuration>
-            <source>${maven.compile.source}</source>
-            <target>${maven.compile.target}</target>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
             <encoding>${turbine.encoding}</encoding>
             <fork>${turbine.compiler.fork}</fork>
             <compilerVersion>${turbine.compiler.compilerVersion}</compilerVersion>
@@ -115,7 +115,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>2.6</version>
+          <version>2.7</version>
           <configuration>
             <encoding>${turbine.resourceEncoding}</encoding>
           </configuration>
@@ -154,6 +154,7 @@
       <!-- org.apache.maven.plugins, alpha order by artifact id -->
       <plugin>
         <!-- build the source and binary distribution packages -->
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
           <tarLongFileMode>gnu</tarLongFileMode>
@@ -193,8 +194,8 @@
               <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
               <Implementation-Vendor-Id>org.apache</Implementation-Vendor-Id>
               <Implementation-Build>${implementation.build}</Implementation-Build>              
-              <X-Compile-Source-JDK>${maven.compile.source}</X-Compile-Source-JDK>
-              <X-Compile-Target-JDK>${maven.compile.target}</X-Compile-Target-JDK>
+              <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
+              <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
             </manifestEntries>
           </archive>
         </configuration>
@@ -262,7 +263,7 @@
         <configuration>
           <!-- keep only errors and warnings -->
           <quiet>true</quiet>
-          <source>${maven.compile.source}</source>
+          <source>${maven.compiler.source}</source>
           <encoding>${turbine.encoding}</encoding>
           <docEncoding>${turbine.docEncoding}</docEncoding>
           <notimestamp>true</notimestamp>
@@ -436,8 +437,8 @@
   <properties>
 
     <!-- Default configuration for compiler source and target JVM -->
-    <maven.compile.source>1.6</maven.compile.source>
-    <maven.compile.target>1.6</maven.compile.target>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
 
     <!-- Compiler and surefire plugin settings for "java" profiles -->
     <turbine.compiler.fork>false</turbine.compiler.fork>
@@ -446,9 +447,9 @@
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.surefire.version>2.17</turbine.surefire.version>
-    <turbine.surefire-report.version>2.17</turbine.surefire-report.version>
-    <turbine.javadoc.version>2.9.1</turbine.javadoc.version>
+    <turbine.surefire.version>2.18.1</turbine.surefire.version>
+    <turbine.surefire-report.version>2.18.1</turbine.surefire-report.version>
+    <turbine.javadoc.version>2.10.3</turbine.javadoc.version>
     <turbine.rat.version>0.11</turbine.rat.version>
     <turbine.changes.version>2.11</turbine.changes.version>   
     <turbine.jxr.version>2.5</turbine.jxr.version>
@@ -469,9 +470,9 @@
     <project.build.sourceEncoding>${turbine.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${turbine.encoding}</project.reporting.outputEncoding>
 
-    <!-- Javadoc link to Java API.  Default is Java 1.6; components can override to other versions -->
-    <turbine.javadoc.java.link>http://download.oracle.com/javase/6/docs/api/</turbine.javadoc.java.link>
-    <turbine.javadoc.javaee.link>http://download.oracle.com/javaee/6/api/</turbine.javadoc.javaee.link>
+    <!-- Javadoc link to Java API.  Default is Java 7; components can override to other versions -->
+    <turbine.javadoc.java.link>https://docs.oracle.com/javase/7/docs/api/</turbine.javadoc.java.link>
+    <turbine.javadoc.javaee.link>https://docs.oracle.com/javaee/7/api/</turbine.javadoc.javaee.link>
 
     <!-- build meta inf -->
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>

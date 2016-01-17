@@ -25,6 +25,20 @@
 
   <body>
     <release version="4" date="in SVN">
+      <action dev="tv" type="fix" date="2016-01-17">
+        Fix maven.compile(r).source
+      </action>      
+      <action dev="tv" type="update" date="2016-01-17">
+        Update plugins (align with commons-parent-39)
+        - maven-compiler-plugin to 3.3
+        - maven-surefire-plugin to 2.18.1
+        - maven-resources-plugin to 2.7
+        - maven-javadoc-plugin to 2.10.3
+        - maven-site-plugin to 3.4
+      </action>      
+      <action dev="tv" type="update" date="2016-01-17">
+        Update Apache parent POM to 17
+      </action>      
     </release>
     <release version="3" date="2013-09-03">
       <action dev="tv" type="update" date="2013-08-25">
