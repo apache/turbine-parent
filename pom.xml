@@ -158,10 +158,10 @@
         </configuration>
       </plugin>      
       <plugin>
-        <!-- generate the Eclipse project files -->
+        <!-- generate the Eclipse project files or use m2eclipse  -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
-        <version>2.9</version>
+        <version>2.10</version>
         <configuration>
           <downloadSources>true</downloadSources>
           <downloadJavadocs>false</downloadJavadocs>
@@ -429,6 +429,17 @@
         </plugins>
       </build>
     </profile>
+    <!-- ignore doclint errors (should be warnings) for site generation, if using java 8 or above -->
+    <profile>
+        <id>no-doclint</id>
+        <activation>
+            <jdk>[1.8,)</jdk>  
+        </activation>
+        <properties>
+          <additionalparam>-Xdoclint:none</additionalparam>
+        </properties>
+    </profile>
+
   </profiles>
 
   <properties>
