@@ -28,7 +28,6 @@
   <artifactId>turbine-parent</artifactId>
   <packaging>pom</packaging>
 
-  <!-- TODO: dummy version. In Maven 2.1, this will be auto-versioned being a generic parent -->
   <version>4-SNAPSHOT</version>
   <name>Turbine POM</name>
   <description>
@@ -39,7 +38,7 @@
 
   <!-- Now required by versions plugin -->
   <prerequisites>
-    <maven>3.0.1</maven>
+    <maven>3.0.5</maven>
   </prerequisites>
   
   <issueManagement>
@@ -200,6 +199,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
+        <version>${turbine.surefire.version}</version>
         <configuration>
           <jvm>${turbine.surefire.java}</jvm>
         </configuration>
@@ -382,7 +382,7 @@
               <dependency>
                 <groupId>org.apache.turbine</groupId>
                 <artifactId>turbine-parent-assembly</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>1.0.0</version>
               </dependency>
             </dependencies>            
             <!-- Disable Apache Parent POM built-in source assembly -->
@@ -459,7 +459,7 @@
             <jdk>[1.8,)</jdk>  
         </activation>
         <properties>
-          <turbine.findbugs.version>3.0.1</turbine.findbugs.version>
+          <turbine.findbugs.version>3.0.3</turbine.findbugs.version>
           <additionalparam>-Xdoclint:none</additionalparam>
         </properties>
     </profile>
@@ -488,7 +488,7 @@
     <turbine.project-info.version>2.9</turbine.project-info.version>
     <turbine.wagon-ssh.version>2.10</turbine.wagon-ssh.version>
     <turbine.site.version>3.4</turbine.site.version>
-    <turbine.findbugs.version>2.5.4</turbine.findbugs.version>
+    <turbine.findbugs.version>2.5.5</turbine.findbugs.version>
 
     <!--
       Encoding of Java source files: Make sure, that the compiler and
@@ -503,9 +503,9 @@
     <project.build.sourceEncoding>${turbine.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${turbine.encoding}</project.reporting.outputEncoding>
 
-    <!-- Javadoc link to Java API.  Default is Java 7; components can override to other versions -->
-    <turbine.javadoc.java.link>https://docs.oracle.com/javase/7/docs/api/</turbine.javadoc.java.link>
-    <turbine.javadoc.javaee.link>https://docs.oracle.com/javaee/7/api/</turbine.javadoc.javaee.link>
+    <!-- Javadoc link to Java API.  Default is Java 1.7; components can override to other versions -->
+    <turbine.javadoc.java.link>http://docs.oracle.com/javase/7/docs/api/</turbine.javadoc.java.link>
+    <turbine.javadoc.javaee.link>http://docs.oracle.com/javaee/6/api/</turbine.javadoc.javaee.link>
 
     <!-- build meta inf -->
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
