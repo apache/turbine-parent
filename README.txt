@@ -18,9 +18,21 @@
  
  $Id$
 --------------------------------------------------------------------------
- 
-Turbine Parent POM
-Copyright 2006-2018 The Apache Software Foundation
 
-This product includes software developed by
-The Apache Software Foundation (http://www.apache.org/).
+This is the parent for Turbine-Core, Site and most of Fulcrum components. 
+
+USAGE
+
+- Parent module to align dependencies in Fulcrum nand Turbine
+
+- Based on last released commons parent versions
+
+- cft. http://svn.apache.org/repos/asf/commons/proper/commons-parent/trunk
+
+CAVEAT
+
+- Check turbine-parent-assembly module dependency, which overwrites Apache module (still needed, 2017)
+
+RELEASE
+
+- Normally, this module could be released lazily.
