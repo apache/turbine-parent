@@ -25,6 +25,13 @@
 
   <body>
     <release version="5" date="in SVN">
+      <action dev="gk" type="update" date="2018-10-24">
+         - Update Apache parent POM 20
+      </action>  
+      <action dev="gk" type="update" date="2018-10-22">
+         - Require Java 8
+         Update plugins (align with commons-parent-47), 
+      </action>   
     </release>
     <release version="4" date="2016-12-12">
       <action dev="tv" type="update" date="2016-12-12">
