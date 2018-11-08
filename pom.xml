@@ -457,7 +457,7 @@
             <jdk>[1.8,)</jdk>  
         </activation>
         <properties>
-          <additionalparam>-Xdoclint:none</additionalparam>
+          <doclint>none</doclint><!-- since javadoc v.3 this is required instead of -Xdoclint:none -->
         </properties>
     </profile>
 
@@ -500,9 +500,10 @@
     <project.build.sourceEncoding>${turbine.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${turbine.encoding}</project.reporting.outputEncoding>
 
-    <!-- Javadoc link to Java API.  Default is Java 1.7; components can override to other versions -->
-    <turbine.javadoc.java.link>http://docs.oracle.com/javase/7/docs/api/</turbine.javadoc.java.link>
-    <turbine.javadoc.javaee.link>http://docs.oracle.com/javaee/6/api/</turbine.javadoc.javaee.link>
+    <!-- Javadoc link to Java API.  Default is Java 1.8; components can override to other versions -->
+    <turbine.javadoc.java.link>>https://docs.oracle.com/javase/8/docs/api/</turbine.javadoc.java.link>
+    <!-- servlet 3.1, websocket, JSR-342  -->
+    <turbine.javadoc.javaee.link>https://docs.oracle.com/javaee/7/api/</turbine.javadoc.javaee.link>
 
     <!-- build meta inf -->
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
