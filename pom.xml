@@ -75,7 +75,16 @@
 
   <build>
     <pluginManagement>
+     <!-- org.apache.maven.plugins, maven sets order by alpha artifact id -->
       <plugins>
+        <plugin>
+          <!-- build the source and binary distribution packages -->
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <tarLongFileMode>gnu</tarLongFileMode>
+          </configuration>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -148,14 +157,6 @@
     <plugins>
       <!-- org.apache.maven.plugins, alpha order by artifact id -->
       <plugin>
-        <!-- build the source and binary distribution packages -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <tarLongFileMode>gnu</tarLongFileMode>
-        </configuration>
-      </plugin>      
-      <plugin>
         <!-- generate the Eclipse project files or use m2eclipse  -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
@@ -195,6 +196,7 @@
           </archive>
         </configuration>
       </plugin>
+      <!-- source and javadoc plugin are by default in lifecycle phase package, should execute in list order before assembly-plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -382,7 +384,7 @@
                 <artifactId>turbine-parent-assembly</artifactId>
                 <version>1.0.1</version>
               </dependency>
-            </dependencies>            
+            </dependencies>
             <!-- Disable Apache Parent POM built-in source assembly -->
             <executions>
               <execution>
@@ -393,7 +395,7 @@
               </execution>
               <execution>
                 <id>turbine-default-assembly</id>
-                <phase>package</phase>
+                <phase>pre-integration-test</phase><!-- package phase does not suffice if using profile to set it after javadoc and sources -->
                 <goals>
                   <goal>single</goal>
                 </goals>
@@ -407,7 +409,7 @@
                 </configuration>
               </execution>
             </executions>
-          </plugin>      
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -468,6 +470,7 @@
     <!-- Default configuration for compiler source and target JVM -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <java.version>1.8</java.version>
 
     <!-- Compiler and surefire plugin settings for "java" profiles -->
     <turbine.compiler.fork>false</turbine.compiler.fork>
@@ -486,6 +489,8 @@
     <turbine.wagon-ssh.version>3.2.0</turbine.wagon-ssh.version>
     <turbine.site.version>3.7.1</turbine.site.version>
     <turbine.findbugs.version>3.0.3</turbine.findbugs.version>
+    <!-- may replace local settings -->
+    <turbine.log4j2.version>2.11.1</turbine.log4j2.version>
 
     <!--
       Encoding of Java source files: Make sure, that the compiler and
@@ -501,7 +506,7 @@
     <project.reporting.outputEncoding>${turbine.encoding}</project.reporting.outputEncoding>
 
     <!-- Javadoc link to Java API.  Default is Java 1.8; components can override to other versions -->
-    <turbine.javadoc.java.link>>https://docs.oracle.com/javase/8/docs/api/</turbine.javadoc.java.link>
+    <turbine.javadoc.java.link>https://docs.oracle.com/javase/8/docs/api/</turbine.javadoc.java.link>
     <!-- servlet 3.1, websocket, JSR-342  -->
     <turbine.javadoc.javaee.link>https://docs.oracle.com/javaee/7/api/</turbine.javadoc.javaee.link>
 
