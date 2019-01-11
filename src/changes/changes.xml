@@ -24,8 +24,13 @@
   </properties>
 
   <body>
-    <release version="5" date="in SVN">
-      <action dev="gk" type="update" date="2018-10-24">
+    <release version="6" date="in SVN">
+      <action dev="gk" type="update" date="2019-01-11">
+         - Update Surefire to 3.0.0 M3
+      </action>  
+    </release>
+    <release version="5" date="2018-10-30">
+      <action dev="gk" type="update" date="2018-11-01">
          - Update Apache parent POM 20
       </action>  
       <action dev="gk" type="update" date="2018-10-22">

@@ -479,8 +479,8 @@
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.surefire.version>2.22.0</turbine.surefire.version>
-    <turbine.surefire-report.version>2.22.0</turbine.surefire-report.version>
+    <turbine.surefire.version>3.0.0-M3</turbine.surefire.version>
+    <turbine.surefire-report.version>3.0.0-M3</turbine.surefire-report.version>
     <turbine.javadoc.version>3.0.1</turbine.javadoc.version>
     <turbine.rat.version>0.12</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>   
