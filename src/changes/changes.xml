@@ -25,6 +25,9 @@
 
   <body>
     <release version="6" date="in SVN">
+      <action dev="painter" type="update" date="2019-04-24">
+         - Update PMD plugin to 3.12.0
+      </action>  
       <action dev="gk" type="update" date="2019-01-11">
          - Update Surefire to 3.0.0 M3
       </action>  
