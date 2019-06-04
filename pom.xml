@@ -33,7 +33,7 @@
   <description>
     The parent POM for the Apache Turbine and Fulcrum project.
   </description>  
-  <url>http://turbine.apache.org</url>
+  <url>https://turbine.apache.org</url>
   <inceptionYear>2011</inceptionYear>
 
   <!-- Now required by versions plugin -->
@@ -43,7 +43,7 @@
   
   <issueManagement>
     <system>jira</system>
-    <url>http://issues.apache.org/jira/browse/TRB</url>
+    <url>https://issues.apache.org/jira/browse/TRB</url>
   </issueManagement>
 
   <!--
@@ -51,9 +51,9 @@
     a release of the turbine-parent POM.
   -->
   <scm>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</connection>
+    <connection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</connection>
     <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</developerConnection>
-    <url>http://svn.apache.org/viewvc/turbine/maven/turbine-parent/trunk/</url>
+    <url>https://svn.apache.org/viewvc/turbine/maven/turbine-parent/trunk/</url>
   </scm>
 
   <mailingLists>
@@ -88,6 +88,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
+          <version>${turbine.compiler.version}</version>
           <configuration>
             <source>${maven.compiler.source}</source>
             <target>${maven.compiler.target}</target>
@@ -321,11 +322,17 @@
         <artifactId>maven-surefire-report-plugin</artifactId>
         <version>${turbine.surefire.version}</version>
       </plugin>
+      <!-- get test coverage for regression tests -->
+      <!-- [WARN] JavaNCSS got an error while parsing the java file containing an ERROR ParseException, which is caused by Java8 syntax - reports are still generated - and it's already a registered issue:  https://github.com/cobertura/cobertura/issues/176 -->
       <plugin>
-        <!-- get test coverage for regression tests -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
         <version>2.7</version>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${turbine.jacoco.version}</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -410,6 +417,48 @@
               </execution>
             </executions>
           </plugin>
+          <plugin>
+            <groupId>org.owasp</groupId>
+            <artifactId>dependency-check-maven</artifactId>
+            <version>5.0.0-M1</version><!-- requires mvn version > 3.3! For older version try to check v 3.2.1 or 3.1.2 -->
+            <executions>
+               <execution>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+               <skip>${dependency.check.skip}</skip>
+            </configuration>
+          </plugin>
+          <!-- jacoco is skipped by default -->
+          <plugin>
+              <groupId>org.jacoco</groupId>
+              <artifactId>jacoco-maven-plugin</artifactId>
+              <version>${turbine.jacoco.version}</version>
+              <configuration>
+                  <skip>${turbine.jacoco.skip}</skip>
+                  <excludes>
+                    <exclude>*/*Test*</exclude>
+                  </excludes>
+              </configuration>
+              <executions>
+                <execution>
+                  <id>default-prepare-agent</id>
+                  <goals>
+                  <goal>prepare-agent</goal>
+                  </goals>
+                </execution>
+                <execution><!-- check or delete jacoco-sessions.html -->
+                    <id>report</id>
+                    <phase>prepare-package</phase>
+                    <goals>
+                      <goal>report</goal>
+                    </goals>
+                  </execution>
+              </executions>
+            </plugin>
         </plugins>
       </build>
     </profile>
@@ -479,18 +528,21 @@
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
+    <turbine.compiler.version>3.8.0</turbine.compiler.version>   
     <turbine.surefire.version>3.0.0-M3</turbine.surefire.version>
     <turbine.surefire-report.version>3.0.0-M3</turbine.surefire-report.version>
-    <turbine.javadoc.version>3.0.1</turbine.javadoc.version>
+    <turbine.javadoc.version>3.1.0</turbine.javadoc.version>
     <turbine.rat.version>0.12</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>   
     <turbine.jxr.version>3.0.0</turbine.jxr.version>
     <turbine.project-info.version>3.0.0</turbine.project-info.version>
-    <turbine.wagon-ssh.version>3.2.0</turbine.wagon-ssh.version>
+    <turbine.wagon-ssh.version>3.3.2</turbine.wagon-ssh.version>
     <turbine.site.version>3.7.1</turbine.site.version>
     <turbine.findbugs.version>3.0.3</turbine.findbugs.version>
+    <turbine.jacoco.version>0.8.4</turbine.jacoco.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.11.1</turbine.log4j2.version>
+    <turbine.log4j2.version>2.11.2</turbine.log4j2.version>
+    <turbine.jacoco.skip>true</turbine.jacoco.skip>
 
     <!--
       Encoding of Java source files: Make sure, that the compiler and
