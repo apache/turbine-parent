@@ -25,11 +25,17 @@
 
   <body>
     <release version="6" date="in SVN">
+      <action dev="gk" type="update" date="2019-01-11">
+         - moved Owasp 5.1.1 plugin from Turbine Core/Fulcrum components
+         - define ${turbine.log4j2.version}, currently 2.12.0
+      </action>  
       <action dev="painter" type="update" date="2019-04-24">
          - Update PMD plugin to 3.12.0
       </action>  
       <action dev="gk" type="update" date="2019-01-11">
-         - Update Surefire to 3.0.0 M3
+         - Update Surefire to 3.0.0 M3,
+         - add (optional)jacoco plugin version 0.8.4, ${turbine.jacoco.skip} = true by default
+         - Update Javadoc to 3.1.0, Java compiler to 3.8.0, wagon-ssh to 3.3.2
       </action>  
     </release>
     <release version="5" date="2018-10-30">
