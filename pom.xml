@@ -139,6 +139,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
+          <version>${turbine.site.version}</version>
           <configuration>
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
@@ -289,7 +290,7 @@
         <!-- generate the PMD reports -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.12.0</version>
+        <version>3.13.0</version>
         <configuration>
           <minimumTokens>200</minimumTokens>
           <!--linkXref>true</linkXref-->
@@ -543,10 +544,10 @@
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.compiler.version>3.8.0</turbine.compiler.version>   
+    <turbine.compiler.version>3.8.1</turbine.compiler.version>   
     <turbine.surefire.version>3.0.0-M3</turbine.surefire.version>
     <turbine.surefire-report.version>3.0.0-M3</turbine.surefire-report.version>
-    <turbine.javadoc.version>3.1.1</turbine.javadoc.version>
+    <turbine.javadoc.version>3.2.0</turbine.javadoc.version>
     <turbine.rat.version>0.13</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>   
     <turbine.jxr.version>3.0.0</turbine.jxr.version>
