@@ -331,13 +331,7 @@
         <artifactId>maven-surefire-report-plugin</artifactId>
         <version>${turbine.surefire.version}</version>
       </plugin>
-      <!-- get test coverage for regression tests -->
-      <!-- [WARN] JavaNCSS got an error while parsing the java file containing an ERROR ParseException, which is caused by Java8 syntax - reports are still generated - and it's already a registered issue:  https://github.com/cobertura/cobertura/issues/176 -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <version>2.7</version>
-      </plugin>
+      <!-- using jacoco since java 8 to get test coverage for regression tests -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -429,7 +423,7 @@
           <plugin>
             <groupId>org.owasp</groupId>
             <artifactId>dependency-check-maven</artifactId>
-            <version>5.1.1</version><!-- 
+            <version>5.3.2</version><!-- 
             - find all configuration parameters here: https://jeremylong.github.io/DependencyCheck/dependency-check-maven/.
             - if process hangs up, check or remove all files including odc.mv.db in maven repo in folder org\owasp\dependency-check-data\4.0\.
             - requires mvn version > 3.3! For older version try to check v 3.2.1 or 3.1.2 -->
@@ -448,13 +442,13 @@
                </suppressionFiles-->
             </configuration>
           </plugin>
-          <!-- jacoco is skipped by default -->
+          <!-- jacoco is since java 8 enabled by default -->
           <plugin>
               <groupId>org.jacoco</groupId>
               <artifactId>jacoco-maven-plugin</artifactId>
               <version>${turbine.jacoco.version}</version>
               <configuration>
-                  <skip>${turbine.jacoco.skip}</skip>
+                  <skip>${jacoco.skip}</skip>
                   <excludes>
                     <exclude>*/*Test*</exclude>
                   </excludes>
@@ -516,15 +510,52 @@
         </plugins>
       </build>
     </profile>
+    <!-- usng profile to exclude if required, java 12 incompatible -->
+    <profile>
+      <id>cobertura</id>
+      <reporting>
+        <plugins>
+            <!-- [WARN] JavaNCSS got an error while parsing the java file containing an ERROR ParseException, which is caused by Java8 syntax - reports are still generated - and it's already a registered issue:  https://github.com/cobertura/cobertura/issues/176 -->
+              <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+                <!--reportSets>
+                      <reportSet>
+                        <reports>
+                          <report>cobertura</report>
+                        </reports>
+                      </reportSet>
+                    </reportSets-->
+              </plugin>
+        </plugins>
+      </reporting>
+      <properties>
+          <cobertura.skip>false</cobertura.skip>
+      </properties>
+    </profile>
     <!-- ignore doclint errors (should be warnings) for site generation, if using java 8 or above -->
     <!-- Use java 8 compatible version of FindBugs -->
     <profile>
         <id>java8</id>
         <activation>
-            <jdk>[1.8,)</jdk>  
+            <jdk>8</jdk>  
         </activation>
         <properties>
           <doclint>none</doclint><!-- since javadoc v.3 this is required instead of -Xdoclint:none -->
+        </properties>
+    </profile>
+     <profile>
+        <id>java12</id>
+        <activation>
+            <jdk>[12,)</jdk>  
+        </activation>
+        <properties>
+            <java.version>12</java.version>
+            <!--  maven.compiler.* is now different from compilerVersion, which requires to fork -->
+            <turbine.compiler.fork>true</turbine.compiler.fork>
+            <turbine.compiler.compilerVersion>1.12</turbine.compiler.compilerVersion>
+            <maven.compiler.release>8</maven.compiler.release>
         </properties>
     </profile>
 
@@ -557,8 +588,9 @@
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
     <turbine.jacoco.version>0.8.5</turbine.jacoco.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.13.0</turbine.log4j2.version>
-    <turbine.jacoco.skip>true</turbine.jacoco.skip>
+    <turbine.log4j2.version>2.13.3</turbine.log4j2.version>
+    <jacoco.skip>false</jacoco.skip>
+    <cobertura.skip>true</cobertura.skip>
 
     <!--
       Encoding of Java source files: Make sure, that the compiler and

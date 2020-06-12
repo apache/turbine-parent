@@ -36,3 +36,5 @@ CAVEAT
 RELEASE
 
 - Normally, this module could be released lazily.
+
+- Java 8: include explicitely cobertura if needed: mvn clean site install -Papache-release,cobertura
