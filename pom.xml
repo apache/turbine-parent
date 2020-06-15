@@ -38,11 +38,6 @@
 
   <inceptionYear>2011</inceptionYear>
 
-  <!-- Now required by versions plugin -->
-  <prerequisites>
-    <maven>3.0.5</maven>
-  </prerequisites>
-
   <issueManagement>
     <system>jira</system>
     <url>https://issues.apache.org/jira/browse/TRB</url>
