@@ -478,18 +478,11 @@
             </executions>
           </plugin>
           <plugin>
-            <groupId>org.owasp</groupId>
-            <artifactId>dependency-check-maven</artifactId>
-          </plugin>
-          <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
           </plugin>
         </plugins>
       </build>
-      <properties>
-        <dependency.check.skip>false</dependency.check.skip>
-      </properties>
     </profile>
 
     <!-- Configure site plugin to support both Maven2 and Maven3, see: http://maven.apache.org/plugins/maven-site-plugin/maven-3.html#Using_the_same_version_of_maven-site-plugin_for_both_Maven_2_and_Maven_3 
