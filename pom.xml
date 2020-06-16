@@ -20,7 +20,7 @@
   <artifactId>turbine-parent</artifactId>
   <packaging>pom</packaging>
 
-  <version>7</version>
+  <version>8-SNAPSHOT</version>
   <name>Turbine POM</name>
   <description>
     The parent POM for the Apache Turbine and Fulcrum project.
@@ -44,9 +44,9 @@
   <!-- This section *must* be overwritten by subprojects. It is only to allow 
     a release of the turbine-parent POM. -->
   <scm>
-    <connection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/tags/turbine-parent-7</connection>
-   <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/tags/turbine-parent-7</developerConnection>
-   <url>https://svn.apache.org/viewvc/turbine/maven/turbine-parent/tags/turbine-parent-7</url>
+    <connection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</connection>
+   <developerConnection>scm:svn:https://svn.apache.org/repos/asf/turbine/maven/turbine-parent/trunk</developerConnection>
+   <url>https://svn.apache.org/viewvc/turbine/maven/turbine-parent/trunk/</url>
   </scm>
 
   <mailingLists>
