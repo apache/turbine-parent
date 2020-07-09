@@ -24,7 +24,30 @@
   </properties>
 
   <body>
-    <release version="6" date="in SVN">
+  <release version="8" date="in SVN"> 
+       <action dev="gk" type="update" date="2020-07-09">
+         -     surefire to 3.0.0-M5
+      </action> 
+  </release>
+  <release version="7" date="2020-06-26">
+      <action dev="gk" type="update" date="2020-06-15">
+        Updated plugins:
+         - javadoc plugin to 3.2.0, 
+         - site plugin  to 3.8.2, 
+         - patch updates for plugins compiler to 3.8.1, findbugs to 3.0.5, rat to 0.13
+         - surefire plugin to 3.0.0-M4
+      </action> 
+      <action dev="gk" type="update" date="2020-06-12">
+       - update org.owasp dependency-check-maven plugin to 5.3.3, 
+       - log4j2 to 2.13.3
+       - add cobertura profile to include if needed, activate jacoco by default
+       - add java12 profile
+      </action>
+       <action dev="gk" type="update" date="2020-02-28">
+        - update parent: apache parent from 20 to2 3
+      </action>          
+     </release>
+    <release version="6" date="2019-07-16">
       <action dev="gk" type="update" date="2019-01-11">
          - moved Owasp 5.1.1 plugin from Turbine Core/Fulcrum components
          - define ${turbine.log4j2.version}, currently 2.12.0

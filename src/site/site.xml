@@ -21,25 +21,25 @@
   <bannerLeft>
     <name>Apache Turbine</name>
     <alt>Apache Turbine</alt>
-    <src>http://turbine.apache.org/images/turbine-project.png</src>
-    <href>http://turbine.apache.org/</href>
+    <src>https://turbine.apache.org/images/turbine-project.png</src>
+    <href>https://turbine.apache.org/</href>
   </bannerLeft>
   <publishDate format="dd MMMM yyyy" position="left" />
   <version position="left" />
   <body>
     <links>
-      <item name="Apache"  href="http://www.apache.org"/>
-      <item name="Turbine" href="http://turbine.apache.org/" />      
-      <item name="Fulcrum" href="http://turbine.apache.org/fulcrum/" />
+      <item name="Apache"  href="https://www.apache.org"/>
+      <item name="Turbine" href="https://turbine.apache.org/" />      
+      <item name="Fulcrum" href="https://turbine.apache.org/fulcrum/" />
     </links>
     <menu ref="reports" inherit="bottom" />
     <menu name="Apache" inherit="bottom">
-        <item name="Apache Website"     href="http://www.apache.org/"/>
-        <item name="License"            href="http://www.apache.org/licenses/" />
-        <item name="How the ASF works"  href="http://www.apache.org/foundation/how-it-works.html"/>
-        <item name="Sponsorship"        href="http://www.apache.org/foundation/sponsorship.html" />
-        <item name="Thanks"             href="http://www.apache.org/foundation/thanks.html" />
-        <item name="Security"           href="http://www.apache.org/security/" />
+        <item name="Apache Website"     href="https://www.apache.org/"/>
+        <item name="License"            href="https://www.apache.org/licenses/" />
+        <item name="How the ASF works"  href="https://www.apache.org/foundation/how-it-works.html"/>
+        <item name="Sponsorship"        href="https://www.apache.org/foundation/sponsorship.html" />
+        <item name="Thanks"             href="https://www.apache.org/foundation/thanks.html" />
+        <item name="Security"           href="https://www.apache.org/security/" />
     </menu>
   </body>
 </project>

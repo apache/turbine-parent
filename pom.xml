@@ -584,8 +584,8 @@
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
     <turbine.compiler.version>3.8.1</turbine.compiler.version>
-    <turbine.surefire.version>3.0.0-M4</turbine.surefire.version>
-    <turbine.surefire-report.version>3.0.0-M4</turbine.surefire-report.version>
+    <turbine.surefire.version>3.0.0-M5</turbine.surefire.version>
+    <turbine.surefire-report.version>3.0.0-M5</turbine.surefire-report.version>
     <turbine.javadoc.version>3.2.0</turbine.javadoc.version>
     <turbine.rat.version>0.13</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>
