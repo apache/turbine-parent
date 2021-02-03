@@ -151,9 +151,11 @@
           it exposes file paths to artifacts and check each possible vulnerability 
           carefully, find more info about how to read, false positives et al. here: 
           https://jeremylong.github.io/DependencyCheck/dependency-check-maven/plugin-info.html 
-          or https://github.com/jeremylong/DependencyCheck CLI mvn phase $>mvn verify 
-          -Ddependency.check.skip=false or to invoke goal only: $>mvn org.owasp:dependency-check-maven:check 
-          -Ddependency.check.skip=false -->
+          or https://github.com/jeremylong/DependencyCheck CLI mvn phase 
+          $>mvn verify -Ddependency.check.skip=false 
+          or to invoke goal only: 
+          $>mvn org.owasp:dependency-check-maven:check 
+          -->
         <plugin>
           <groupId>org.owasp</groupId>
           <artifactId>dependency-check-maven</artifactId>
@@ -351,10 +353,12 @@
           <targetJdk>${maven.compile.source}</targetJdk>
           <rulesets>
             <!-- comment default rule sets: basic, imports, unusedcode -->
-            <ruleset>/rulesets/java/basic.xml</ruleset>
-            <ruleset>/rulesets/java/finalizers.xml</ruleset>
-            <ruleset>/rulesets/java/imports.xml</ruleset>
-            <ruleset>/rulesets/java/unusedcode.xml</ruleset>
+            <ruleset>/category/java/bestpractices.xml</ruleset>
+            <ruleset>/category/java/codestyle.xml</ruleset>
+            <ruleset>/category/java/errorprone.xml</ruleset>
+            <ruleset>/category/java/multithreading.xml</ruleset>
+            <ruleset>/category/java/performance.xml</ruleset>
+            <ruleset>/category/java/design.xml</ruleset>
           </rulesets>
         </configuration>
       </plugin>
@@ -595,12 +599,13 @@
     <turbine.site.version>3.8.2</turbine.site.version>
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
     <turbine.jacoco.version>0.8.5</turbine.jacoco.version>
-    <turbine.dependency.check.version>5.3.2</turbine.dependency.check.version>
+    <turbine.dependency.check.version>6.1.0</turbine.dependency.check.version>
     <!-- may replace local settings -->
     <turbine.log4j2.version>2.13.3</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
-    <dependency.check.skip>true</dependency.check.skip>
+    <!-- amazon corretto 8.252 was buggy, enabled now by default -->
+    <dependency.check.skip>false</dependency.check.skip>
 
     <!-- Encoding of Java source files: Make sure, that the compiler and 
       the javadoc generator use the right encoding. Subprojects may overwrite this, 
