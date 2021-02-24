@@ -290,6 +290,20 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <!-- to push to locale repo phase must be before install -->
+            <phase>verify</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <reporting>
@@ -549,7 +563,7 @@
     <profile>
       <id>java8</id>
       <activation>
-        <jdk>8</jdk>
+        <jdk>[8,)</jdk>
       </activation>
       <properties>
         <doclint>none</doclint><!-- since javadoc v.3 this is required instead 
