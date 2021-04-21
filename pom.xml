@@ -577,11 +577,8 @@
       </activation>
       <properties>
         <java.version>12</java.version>
-        <!-- maven.compiler.* is now different from compilerVersion, which 
-          requires to fork -->
-        <turbine.compiler.fork>true</turbine.compiler.fork>
         <turbine.compiler.compilerVersion>1.12</turbine.compiler.compilerVersion>
-        <maven.compiler.release>8</maven.compiler.release>
+        <maven.compiler.release>12</maven.compiler.release>
       </properties>
     </profile>
 
@@ -594,8 +591,9 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <java.version>1.8</java.version>
 
-    <!-- Compiler and surefire plugin settings for "java" profiles -->
-    <turbine.compiler.fork>false</turbine.compiler.fork>
+    <!-- Compiler and surefire plugin settings for "java" profiles, maven.compiler.* is now different from compilerVersion, which 
+          requires to fork -->
+    <turbine.compiler.fork>true</turbine.compiler.fork>
     <turbine.compiler.compilerVersion>1.8</turbine.compiler.compilerVersion>
     <turbine.compiler.javac>${JAVA_HOME}/bin/javac</turbine.compiler.javac>
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
@@ -609,16 +607,16 @@
     <turbine.changes.version>2.12.1</turbine.changes.version>
     <turbine.jxr.version>3.0.0</turbine.jxr.version>
     <turbine.project-info.version>3.0.0</turbine.project-info.version>
-    <turbine.wagon-ssh.version>3.3.2</turbine.wagon-ssh.version>
-    <turbine.site.version>3.8.2</turbine.site.version>
+    <turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version>
+    <turbine.site.version>3.9.1</turbine.site.version>
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
-    <turbine.jacoco.version>0.8.5</turbine.jacoco.version>
-    <turbine.dependency.check.version>6.1.0</turbine.dependency.check.version>
+    <turbine.jacoco.version>0.8.6</turbine.jacoco.version>
+    <turbine.dependency.check.version>6.1.2</turbine.dependency.check.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.13.3</turbine.log4j2.version>
+    <turbine.log4j2.version>2.14.1</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
-    <!-- amazon corretto 8.252 was buggy, enabled now by default -->
+    <!-- enabled now by default -->
     <dependency.check.skip>false</dependency.check.skip>
 
     <!-- Encoding of Java source files: Make sure, that the compiler and 

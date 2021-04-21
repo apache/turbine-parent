@@ -25,8 +25,19 @@
 
   <body>
   <release version="8" date="in SVN"> 
+         <action dev="gk" type="update" date="2021-04-21">
+         -     org.owasp dependency-check-maven plugin to 6.1.2
+         -     log4j2 version 2.14.1
+         -     jacoco plugin to 0.8.6
+         -     site to 3.9.1
+         -     profile maven with waggon-ssh 3.4.3
+         -     set maven lifecycle phase of source plugin to attach-sources
+         -     compilerVersion fix to 1.8 for java above or below version 12.
+         -     fork by default now , adjust profile java 12
+      </action> 
        <action dev="gk" type="update" date="2020-07-09">
          -     surefire to 3.0.0-M5
+         -     pmd plugin replace rulesets/* with /category/* rulesets
       </action> 
   </release>
   <release version="7" date="2020-06-26">
