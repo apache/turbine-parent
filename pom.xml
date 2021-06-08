@@ -98,6 +98,7 @@
           <configuration>
             <!-- keep only errors and warnings -->
             <quiet>true</quiet>
+            <source>8</source>
             <encoding>${turbine.encoding}</encoding>
             <docEncoding>${turbine.docEncoding}</docEncoding>
             <notimestamp>true</notimestamp>
@@ -325,14 +326,7 @@
           </reportSet>
         </reportSets>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>${turbine.findbugs.version}</version>
-        <configuration>
-          <threshold>Normal</threshold>
-        </configuration>
-      </plugin>
+      <!-- findbugs and spotbugs in profiles -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -360,7 +354,7 @@
         <!-- generate the PMD reports -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>3.14.0</version>
         <configuration>
           <minimumTokens>200</minimumTokens>
           <!--linkXref>true</linkXref -->
@@ -536,7 +530,7 @@
         </plugins>
       </build>
     </profile>
-    <!-- usng profile to exclude if required, java 12 incompatible -->
+    <!-- using profile to exclude if required, java 12 incompatible -->
     <profile>
       <id>cobertura</id>
       <reporting>
@@ -580,8 +574,41 @@
         <turbine.compiler.compilerVersion>1.12</turbine.compiler.compilerVersion>
         <maven.compiler.release>12</maven.compiler.release>
       </properties>
+      <reporting>
+          <plugins>
+          <plugin>
+                 <groupId>com.github.spotbugs</groupId>
+                  <artifactId>spotbugs-maven-plugin</artifactId>
+                  <version>4.2.0</version>
+                  <configuration>
+                    <dependency>
+                      <groupId>com.github.spotbugs</groupId>
+                      <artifactId>spotbugs</artifactId>
+                      <version>4.2.3</version>
+                    </dependency>
+                  </configuration>
+             </plugin>
+           </plugins>
+      </reporting>
     </profile>
-
+    <profile>
+      <id>findbugs-legacy</id>
+      <activation>
+        <jdk>[8,12)</jdk>
+      </activation>
+      <reporting>
+          <plugins>
+              <plugin>   
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${turbine.findbugs.version}</version>
+                <configuration>
+                  <threshold>Normal</threshold>
+                </configuration>
+              </plugin>
+            </plugins>
+      </reporting>
+    </profile>
   </profiles>
 
   <properties>
