@@ -29,8 +29,9 @@
 
   <distributionManagement>
     <site>
-      <id>turbine.apache.org</id>
-      <url>scm:svn:${turbine.scmPubUrl}</url>
+      <id>apache.website</id>
+      <!-- scmPubUrl should be different for each project. If not defined scmPubUrl uses default value ${project.distributionManagement.site.url} -->
+      <url>scm:git:${turbine.scmPubUrl}</url>
     </site>
   </distributionManagement>
 
@@ -277,9 +278,11 @@
         <artifactId>maven-scm-publish-plugin</artifactId>
         <configuration>
           <content>${project.reporting.outputDirectory}</content>
-          <pubScmUrl>scm:svn:${turbine.scmPubUrl}</pubScmUrl>
+          <pubScmUrl>scm:git:${turbine.scmPubUrl}</pubScmUrl>
           <checkoutDirectory>${turbine.scmPubCheckoutDirectory}</checkoutDirectory>
           <tryUpdate>true</tryUpdate>
+          <!-- branch where to deploy -->
+          <scmBranch>asf-site</scmBranch>
         </configuration>
         <executions>
           <execution>
@@ -672,7 +675,7 @@
     <!-- value modules can override it -->
     <turbine.site.path>${project.artifactId}</turbine.site.path>
 
-    <turbine.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/turbine/content/${turbine.site.path}</turbine.scmPubUrl>
+    <turbine.scmPubUrl>https://gitbox.apache.org/repos/asf/${turbine.site.path}.git</turbine.scmPubUrl>
     <turbine.scmPubCheckoutDirectory>${turbine.site.cache}/${turbine.site.path}</turbine.scmPubCheckoutDirectory>
 
     <!-- maven-surefire-plugin -->
