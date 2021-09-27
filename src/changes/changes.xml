@@ -24,7 +24,24 @@
   </properties>
 
   <body>
-  <release version="8" date="in SVN"> 
+   <release version="9" date="in version control"> 
+        <action dev="gk" type="update" date="2021-09-27">
+         -  scm url (not redirected) in pom.xm and update changes.xml
+        </action> 
+       <action dev="gk" type="update" date="2021-09-09">
+         -  scm and asf-site setting in pom.xml
+        </action>  
+      <action dev="gk" type="update" date="2021-09-08">
+         -  scm update from svn to git
+        </action>  
+       <action dev="gk" type="update" date="2021-06-08">
+         -  java 11/12 bug: flag to avoid https://bugs.java.com/bugdatabase/view_bug.do?bug_id=8212233
+         -  java > 11 replace Findbugs with SpotBugs
+         -  pmd plugin v3.14.0
+        </action> 
+  </release>
+
+  <release version="8" date="2021-04-28"> 
          <action dev="gk" type="update" date="2021-04-21">
          -     org.owasp dependency-check-maven plugin to 6.1.2
          -     log4j2 version 2.14.1
