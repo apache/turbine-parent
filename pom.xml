@@ -461,7 +461,7 @@
               <dependency>
                 <groupId>org.apache.turbine</groupId>
                 <artifactId>turbine-parent-assembly</artifactId>
-                <version>1.0.1</version>
+                <version>1.0.2</version>
               </dependency>
             </dependencies>
             <!-- Disable Apache Parent POM built-in source assembly -->
