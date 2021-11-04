@@ -150,35 +150,11 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${turbine.surefire.version}</version>
         </plugin>
-        <!-- run in profile or optionally, use not as reporting plugin, as 
-          it exposes file paths to artifacts and check each possible vulnerability 
-          carefully, find more info about how to read, false positives et al. here: 
-          https://jeremylong.github.io/DependencyCheck/dependency-check-maven/plugin-info.html 
-          or https://github.com/jeremylong/DependencyCheck CLI mvn phase 
-          $>mvn verify -Ddependency.check.skip=false 
-          or to invoke goal only: 
-          $>mvn org.owasp:dependency-check-maven:check 
-          -->
         <plugin>
-          <groupId>org.owasp</groupId>
-          <artifactId>dependency-check-maven</artifactId>
-          <version>${turbine.dependency.check.version}</version>
-          <!-- - find all configuration parameters here: https://jeremylong.github.io/DependencyCheck/dependency-check-maven/. 
-            - if process hangs up, check or remove all files including odc.mv.db in maven 
-            repo in folder org\owasp\dependency-check-data\4.0\. - requires mvn version 
-            > 3.3! For older version try to check v 3.2.1 or 3.1.2 -->
-          <executions>
-            <execution>
-              <goals>
-                <goal>check</goal>
-              </goals>
-            </execution>
-          </executions>
-          <configuration>
-            <skip>${dependency.check.skip}</skip>
-            <!--autoUpdate>false</autoUpdate -->
-          </configuration>
-        </plugin>
+            <groupId>org.owasp</groupId>
+            <artifactId>dependency-check-maven</artifactId>
+            <version>${turbine.dependency.check.version}</version>
+         </plugin>
         <!-- jacoco is since java 8 enabled by default -->
         <!-- jacoco agent may block gpg agent ? -->
         <!-- Be aware, as we exclude tests itself, jacoco only starts, if 
@@ -213,11 +189,6 @@
     </pluginManagement>
     <plugins>
       <!-- org.apache.maven.plugins, alpha order by artifact id -->
-      <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>${turbine.dependency.check.version}</version>
-      </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -533,6 +504,49 @@
           </plugin>
         </plugins>
       </build>
+    </profile>
+   <profile>
+       <!-- run in profile or optionally, use not as reporting plugin, as 
+          it exposes file paths to artifacts and check each possible vulnerability 
+          carefully, find more info about how to read, false positives et al. here: 
+          https://jeremylong.github.io/DependencyCheck/dependency-check-maven/plugin-info.html 
+          or https://github.com/jeremylong/DependencyCheck CLI mvn phase 
+          $>mvn verify -Ddependency.check.skip=false 
+          or to invoke goal only: 
+          $>mvn org.owasp:dependency-check-maven:check 
+       -->
+      <id>owasp</id>
+      <activation>
+        <property>
+            <name>dependency.check.skip</name>
+            <value>!true</value>
+         </property>
+      </activation>
+      <build>
+            <plugins>
+                <plugin>
+                  <groupId>org.owasp</groupId>
+                  <artifactId>dependency-check-maven</artifactId>
+                  <!-- - find all configuration parameters here: https://jeremylong.github.io/DependencyCheck/dependency-check-maven/. 
+                    - if process hangs up, check or remove all files including odc.mv.db in maven 
+                    repo in folder org/owasp/dependency-check-data/4.0/, if mvn version  > 3.3. 
+                    For older version try to check v3.2.1 or 3.1.2 -->
+                  <executions>
+                    <execution>
+                      <goals>
+                        <goal>check</goal>
+                      </goals>
+                    </execution>
+                  </executions>
+                  <configuration>
+                    <skip>${dependency.check.skip}</skip>
+                    <!--autoUpdate>false</autoUpdate -->
+                  </configuration>
+                  <dependencies>
+                  </dependencies>
+                </plugin>
+            </plugins>
+       </build>
     </profile>
     <!-- using profile to exclude if required, java 12 incompatible -->
     <profile>
