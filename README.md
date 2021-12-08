@@ -22,3 +22,7 @@ This is the parent for Turbine-Core, Site and most of Fulcrum components and inh
 Since v.9
 
 - Java 8: include explicitely cobertura if needed: mvn clean site install -Papache-release,cobertura
+
+Since v10
+
+- Profile owasp, which enables the by default disabled dependency check.

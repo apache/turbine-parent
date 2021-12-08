@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>23</version>
+    <version>24</version>
   </parent>
   <groupId>org.apache.turbine</groupId>
   <artifactId>turbine-parent</artifactId>
@@ -127,7 +127,6 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>${turbine.site.version}</version>
           <configuration>
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
@@ -188,7 +187,6 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <!-- org.apache.maven.plugins, alpha order by artifact id -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -266,20 +264,7 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <!-- to push to locale repo phase must be before install -->
-            <phase>verify</phase>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+      
     </plugins>
   </build>
   <reporting>
@@ -357,7 +342,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>${turbine.site.version}</version>
         <configuration>
           <!-- Exclude the navigation file for Maven 1 sites and the changes 
             file used by the changes-plugin, as they interfere with the site generation. -->
@@ -468,44 +452,8 @@
           </plugin>
         </plugins>
       </build>
-    </profile>
-
-    <!-- Configure site plugin to support both Maven2 and Maven3, see: http://maven.apache.org/plugins/maven-site-plugin/maven-3.html#Using_the_same_version_of_maven-site-plugin_for_both_Maven_2_and_Maven_3 
-      Thanks to Apache Commons -->
-    <profile>
-      <id>maven-3</id>
-      <activation>
-        <file>
-          <!-- The basedir expression is only recognized by Maven 3.x (see 
-            MNG-2363) -->
-          <exists>${basedir}</exists>
-        </file>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-site-plugin</artifactId>
-            <dependencies>
-              <dependency>
-                <!-- add support for ssh/scp -->
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh</artifactId>
-                <version>${turbine.wagon-ssh.version}</version>
-              </dependency>
-            </dependencies>
-            <executions>
-              <execution>
-                <id>attach-descriptor</id>
-                <goals>
-                  <goal>attach-descriptor</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-   <profile>
+    </profile>    
+    <profile>    
        <!-- run in profile or optionally, use not as reporting plugin, as 
           it exposes file paths to artifacts and check each possible vulnerability 
           carefully, find more info about how to read, false positives et al. here: 
@@ -630,6 +578,8 @@
   </profiles>
 
   <properties>
+  
+     <project.build.outputTimestamp>1</project.build.outputTimestamp>
 
     <!-- Default configuration for compiler source and target JVM -->
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -650,10 +600,13 @@
     <turbine.javadoc.version>3.2.0</turbine.javadoc.version>
     <turbine.rat.version>0.13</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>
-    <turbine.jxr.version>3.0.0</turbine.jxr.version>
+    <turbine.jxr.version>3.1.1</turbine.jxr.version>
     <turbine.project-info.version>3.0.0</turbine.project-info.version>
-    <turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version>
-    <turbine.site.version>3.9.1</turbine.site.version>
+    <!-- unused :
+        turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version
+         as in apache pom :
+        turbine.site.version>3.9.1</turbine.site.version
+      -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
     <turbine.jacoco.version>0.8.6</turbine.jacoco.version>
     <turbine.dependency.check.version>6.1.2</turbine.dependency.check.version>
@@ -661,8 +614,8 @@
     <turbine.log4j2.version>2.14.1</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
-    <!-- enabled now by default -->
-    <dependency.check.skip>false</dependency.check.skip>
+    <!-- disable by default, added profile owasp, which enables it  -->
+    <dependency.check.skip>true</dependency.check.skip>
 
     <!-- Encoding of Java source files: Make sure, that the compiler and 
       the javadoc generator use the right encoding. Subprojects may overwrite this, 
