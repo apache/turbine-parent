@@ -24,7 +24,16 @@
   </properties>
 
   <body>
-   <release version="9" date="in version control"> 
+   <release version="10" date="in version control"> 
+        <action dev="gk" type="update" date="2021-12-08">
+         -  update apache pom v24, removed maven3 profile, disabled dependency check/scan by default,
+         - updated site header
+        </action> 
+       <action dev="gk" type="update" date="2021-11-04">
+         -  added owasp profile
+        </action>  
+  </release>
+   <release version="9" date="2021-10-08"> 
         <action dev="gk" type="update" date="2021-09-27">
          -  scm url (not redirected) in pom.xm and update changes.xml
         </action> 

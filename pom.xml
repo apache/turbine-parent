@@ -15,6 +15,7 @@
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
     <version>24</version>
+    <relativePath/>
   </parent>
   <groupId>org.apache.turbine</groupId>
   <artifactId>turbine-parent</artifactId>
