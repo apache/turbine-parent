@@ -612,7 +612,7 @@
     <turbine.jacoco.version>0.8.6</turbine.jacoco.version>
     <turbine.dependency.check.version>6.1.2</turbine.dependency.check.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.14.1</turbine.log4j2.version>
+    <turbine.log4j2.version>2.15.0</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
     <!-- disable by default, added profile owasp, which enables it  -->
