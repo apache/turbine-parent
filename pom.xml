@@ -243,11 +243,12 @@
           <jvm>${turbine.surefire.java}</jvm>
         </configuration>
       </plugin>
-
       <plugin> <!-- Thanks to Apache Commons -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-publish-plugin</artifactId>
         <configuration>
+          <!-- mono-module doesn't require site:stage -->
+          <!--content>${project.build.directory}/staging</content-->
           <content>${project.reporting.outputDirectory}</content>
           <pubScmUrl>scm:git:${turbine.scmPubUrl}</pubScmUrl>
           <checkoutDirectory>${turbine.scmPubCheckoutDirectory}</checkoutDirectory>
@@ -258,7 +259,7 @@
         <executions>
           <execution>
             <id>scm-publish</id>
-            <phase>site-deploy</phase><!-- deploy site with maven-scm-publish-plugin -->
+            <phase>site-deploy</phase><!-- deploy site with mvn scm-publish:publish-scm -->
             <goals>
               <goal>publish-scm</goal>
             </goals>
@@ -396,6 +397,9 @@
       to better suit the requirements of Apache Turbine. (Thanks to Apache Commons) -->
     <profile>
       <id>apache-release</id>
+      <properties>
+        <dependency.check.skip>true</dependency.check.skip>
+       </properties>
       <build>
         <plugins>
           <plugin>

@@ -25,8 +25,17 @@
 
   <body>
    <release version="10" date="in version control"> 
+         <action dev="gk" type="update" date="2021-12-13">
+         -  activate dependency check/scan in profile apache-release only.
+          </action>
+           <action dev="gk" type="update" date="2021-12-13">
+         -  site with github banner
+          </action>
+         <action dev="gk" type="fix" date="2021-12-11">
+         -  Security patch CVE-2021-44228, update log4j2 to 2.15.0
+        </action>
         <action dev="gk" type="update" date="2021-12-08">
-         -  update apache pom v24, removed maven3 profile, disabled dependency check/scan by default,
+         -  update apache pom v24, removed maven3 profile, disable dependency check/scan by default.
          - updated site header
         </action> 
        <action dev="gk" type="update" date="2021-11-04">
