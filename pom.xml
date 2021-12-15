@@ -21,7 +21,7 @@
   <artifactId>turbine-parent</artifactId>
   <packaging>pom</packaging>
 
-  <version>10</version>
+  <version>11-SNAPSHOT</version>
   <name>Turbine POM</name>
   <description>
     The parent POM for the Apache Turbine and Fulcrum project.
