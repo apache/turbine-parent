@@ -21,7 +21,7 @@
   <artifactId>turbine-parent</artifactId>
   <packaging>pom</packaging>
 
-  <version>10-SNAPSHOT</version>
+  <version>10</version>
   <name>Turbine POM</name>
   <description>
     The parent POM for the Apache Turbine and Fulcrum project.
@@ -608,8 +608,7 @@
     <turbine.jxr.version>3.1.1</turbine.jxr.version>
     <turbine.project-info.version>3.0.0</turbine.project-info.version>
     <!-- unused :
-        turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom :
-        turbine.site.version>3.9.1</turbine.site.version -->
+        turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom : turbine.site.version>3.9.1</turbine.site.version -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
     <turbine.jacoco.version>0.8.6</turbine.jacoco.version>
     <turbine.dependency.check.version>6.1.2</turbine.dependency.check.version>
