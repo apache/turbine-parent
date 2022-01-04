@@ -24,12 +24,18 @@
   </properties>
 
   <body>
-   <release version="10" date="in version control"> 
+   <release version="10" date="in version control">
+       <action dev="gk" type="fix" date="2022-01-103">
+           -  Security patch CVE-2021-44832, CVE-2021-45105: update log4j2 to 2.17.1
+       </action>
+       <action dev="gk" type="fix" date="2021-12-15">
+         -  Security patch CVE-2021-44228, CVE-2021-45046: update log4j2 to 2.16.0
+        </action>
          <action dev="gk" type="update" date="2021-12-13">
          -  activate dependency check/scan in profile apache-release only.
           </action>
            <action dev="gk" type="update" date="2021-12-13">
-         -  site with github banner
+         -  site with github banner and maven-fluido-skin 1.9
           </action>
          <action dev="gk" type="fix" date="2021-12-11">
          -  Security patch CVE-2021-44228, update log4j2 to 2.15.0

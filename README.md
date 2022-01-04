@@ -13,6 +13,11 @@ This is the parent for Turbine-Core, Site and most of Fulcrum components and inh
 
 - Check turbine-parent-assembly module dependency, which overwrites Apache module (still needed in 2017)
 
+- Check versions with Maven Versions Plugin:
+
+    - mvn versions:display-plugin-updates
+    - mvn versions:display-property-updates
+
 ## RELEASE
 
 - Normally, this module (and turbine-parent-assembly) could be released lazily (add [LAZY][VOTE] in release voting phase).
