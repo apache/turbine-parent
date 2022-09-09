@@ -24,8 +24,21 @@
   </properties>
 
   <body>
+    <release version="12" date="in version control">
+       <action dev="gk" type="fix" date="2022-09-09">
+         -  Update deps: javcadoc to 3.4.1, compiler to 3.10.1, rat plugin to 0.14, project-ifno plugin to 3.2.2, jacoco to 2.17.2, log4j2 to 2.17.2 and parent to apache v.26.
+         - Set minimal Java requirement to v11.
+        </action>
+  </release>
+  <release version="11" date="2022-01-04">
+       <action dev="gk" type="fix" date="2022-01-04">
+         -  fix configuration params, update plugins: log4j2,jacoco,dependency-check (owasp),spotbugs,javadoc,pmd,project-info. 
+            Add maven enforcer and set minimum maven version to 3.3.9 (required for spotbug). 
+            Add checksum plugin to generate sha512 for assembly artefacts excluding main artifact.
+        </action>
+  </release>
    <release version="10" date="in version control">
-       <action dev="gk" type="fix" date="2022-01-103">
+       <action dev="gk" type="fix" date="2022-01-04">
            -  Security patch CVE-2021-44832, CVE-2021-45105: update log4j2 to 2.17.1
        </action>
        <action dev="gk" type="fix" date="2021-12-15">

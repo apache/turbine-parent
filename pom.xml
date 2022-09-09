@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>24</version>
+    <version>26</version>
     <relativePath />
   </parent>
   <groupId>org.apache.turbine</groupId>
@@ -398,7 +398,7 @@
         <!-- generate the tag list report -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.0.0</version>
       </plugin>
     </plugins>
   </reporting>
@@ -561,9 +561,9 @@
       if using java 8 or above -->
     <!-- Use java 8 compatible version of FindBugs -->
     <profile>
-      <id>java8</id>
+      <id>java11</id>
       <activation>
-        <jdk>[8,)</jdk>
+        <jdk>[11,)</jdk>
       </activation>
       <properties>
         <doclint>none</doclint><!-- since javadoc v.3 this is required instead of -Xdoclint:none -->
@@ -584,7 +584,7 @@
             <plugin>
                  <groupId>com.github.spotbugs</groupId>
                   <artifactId>spotbugs-maven-plugin</artifactId>
-                  <version>4.5.2.0</version>
+                  <version>4.7.2.1</version>
                   <configuration>
                   </configuration>
              </plugin>
@@ -594,7 +594,7 @@
     <profile>
       <id>findbugs-legacy</id>
       <activation>
-        <jdk>[8,12)</jdk>
+        <jdk>[11,12)</jdk>
       </activation>
       <reporting>
           <plugins>
@@ -616,33 +616,33 @@
      <project.build.outputTimestamp>1</project.build.outputTimestamp>
 
     <!-- Default configuration for compiler source and target JVM -->
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <java.version>1.8</java.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <java.version>11</java.version>
 
     <!-- Compiler and surefire plugin settings for "java" profiles, maven.compiler.* is now different from compilerVersion, which 
           requires to fork -->
     <turbine.compiler.fork>true</turbine.compiler.fork>
-    <turbine.compiler.compilerVersion>1.8</turbine.compiler.compilerVersion>
+    <turbine.compiler.compilerVersion>11</turbine.compiler.compilerVersion>
     <turbine.compiler.javac>${JAVA_HOME}/bin/javac</turbine.compiler.javac>
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.compiler.version>3.8.1</turbine.compiler.version>
+    <turbine.compiler.version>3.10.1</turbine.compiler.version>
     <turbine.surefire.version>3.0.0-M5</turbine.surefire.version>
     <turbine.surefire-report.version>3.0.0-M5</turbine.surefire-report.version>
-    <turbine.javadoc.version>3.3.1</turbine.javadoc.version>
-    <turbine.rat.version>0.13</turbine.rat.version>
+    <turbine.javadoc.version>3.4.1</turbine.javadoc.version>
+    <turbine.rat.version>0.14</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>
     <turbine.jxr.version>3.1.1</turbine.jxr.version>
-    <turbine.project-info.version>3.1.2</turbine.project-info.version>
+    <turbine.project-info.version>3.2.2</turbine.project-info.version>
     <!-- unused :
         turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom : turbine.site.version>3.9.1</turbine.site.version -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
-    <turbine.jacoco.version>0.8.7</turbine.jacoco.version>
-    <turbine.dependency.check.version>6.5.1</turbine.dependency.check.version>
+    <turbine.jacoco.version>0.8.8</turbine.jacoco.version>
+    <turbine.dependency.check.version>7.1.2</turbine.dependency.check.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.17.1</turbine.log4j2.version>
+    <turbine.log4j2.version>2.17.2</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
     <!-- disable by default, added profile owasp, which enables it  -->

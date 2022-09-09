@@ -31,3 +31,7 @@ Since v.9
 Since v10
 
 - Profile owasp, which enables the by default disabled dependency check.
+
+Since v11
+
+- Requires Java 11 minimal.
