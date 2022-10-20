@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>26</version>
+    <version>27</version>
     <relativePath />
   </parent>
   <groupId>org.apache.turbine</groupId>
@@ -49,7 +49,7 @@
     <connection>scm:git:https://gitbox.apache.org/repos/asf/turbine-parent.git</connection>
    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/turbine-parent.git</developerConnection>
    <url>https://gitbox.apache.org/repos/asf?p=turbine-parent.git</url>
-    <tag>turbine-parent-10-candidate</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <mailingLists>
@@ -642,7 +642,7 @@
     <turbine.jacoco.version>0.8.8</turbine.jacoco.version>
     <turbine.dependency.check.version>7.1.2</turbine.dependency.check.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.17.2</turbine.log4j2.version>
+    <turbine.log4j2.version>2.19.0</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
     <!-- disable by default, added profile owasp, which enables it  -->
