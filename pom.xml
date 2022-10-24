@@ -561,23 +561,12 @@
       if using java 8 or above -->
     <!-- Use java 8 compatible version of FindBugs -->
     <profile>
-      <id>java11</id>
+      <id>javaBugsUpdate</id>
       <activation>
-        <jdk>[11,)</jdk>
+        <jdk>[9,)</jdk>
       </activation>
       <properties>
         <doclint>none</doclint><!-- since javadoc v.3 this is required instead of -Xdoclint:none -->
-      </properties>
-    </profile>
-    <profile>
-      <id>java12</id>
-      <activation>
-        <jdk>[12,)</jdk>
-      </activation>
-      <properties>
-        <java.version>12</java.version>
-        <turbine.compiler.compilerVersion>1.12</turbine.compiler.compilerVersion>
-        <maven.compiler.release>12</maven.compiler.release>
       </properties>
       <reporting>
           <plugins>
@@ -592,9 +581,20 @@
       </reporting>
     </profile>
     <profile>
+      <id>java12</id>
+      <activation>
+        <jdk>[12,)</jdk>
+      </activation>
+      <properties>
+        <java.version>12</java.version>
+        <turbine.compiler.compilerVersion>12</turbine.compiler.compilerVersion>
+        <maven.compiler.release>12</maven.compiler.release>
+      </properties>
+    </profile>
+    <profile>
       <id>findbugs-legacy</id>
       <activation>
-        <jdk>[11,12)</jdk>
+        <jdk>[8,10)</jdk>
       </activation>
       <reporting>
           <plugins>
