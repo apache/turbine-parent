@@ -17,6 +17,14 @@ This is the parent for Turbine-Core, Site and most of Fulcrum components and inh
 
     - mvn versions:display-plugin-updates
     - mvn versions:display-property-updates
+    - mvn versions:display-dependency-updates
+    
+### Owasp
+
+If process hangs up, check or remove all files in maven repo in folder org/owasp/dependency-check-data/<VERSION> and 
+run to check separately:
+
+    mvn org.owasp:dependency-check-maven:check 
 
 ## RELEASE
 

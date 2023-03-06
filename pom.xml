@@ -158,7 +158,9 @@
         <!-- jacoco is since java 8 enabled by default -->
         <!-- jacoco agent may block gpg agent ? -->
         <!-- Be aware, as we exclude tests itself, jacoco only starts, if 
-          not skipping tests, as it is a coverage tool! -->
+          not skipping tests, as it is a coverage tool! 
+          jacoco 0.8.8 does not support java version 18 and beyyond
+          -->
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
@@ -205,6 +207,11 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+            <groupId>org.cyclonedx</groupId>
+            <artifactId>cyclonedx-maven-plugin</artifactId>
+            <version>2.7.4</version>
+          </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -492,6 +499,18 @@
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
           </plugin>
+          <plugin>
+            <groupId>org.cyclonedx</groupId>
+            <artifactId>cyclonedx-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>makeAggregateBom</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+          </plugin>
         </plugins>
       </build>
     </profile>    
@@ -518,9 +537,7 @@
                   <groupId>org.owasp</groupId>
                   <artifactId>dependency-check-maven</artifactId>
                   <!-- Find all configuration parameters here: https://jeremylong.github.io/DependencyCheck/dependency-check-maven/.
-                    - if process hangs up, check or remove all files including odc.mv.db in maven 
-                    repo in folder org/owasp/dependency-check-data/4.0/, if mvn version  > 3.3. 
-                    For older version try to check v3.2.1 or 3.1.2 -->
+                  -->
                   <executions>
                     <execution>
                       <goals>
@@ -592,6 +609,15 @@
       </properties>
     </profile>
     <profile>
+      <id>javaBugsUpdate4Jacoco</id>
+      <activation>
+        <jdk>[19,)</jdk>
+      </activation>
+      <properties>
+        <jacoco.skip>true</jacoco.skip>
+      </properties>
+    </profile>
+    <profile>
       <id>findbugs-legacy</id>
       <activation>
         <jdk>[8,10)</jdk>
@@ -642,7 +668,7 @@
     <turbine.jacoco.version>0.8.8</turbine.jacoco.version>
     <turbine.dependency.check.version>7.1.2</turbine.dependency.check.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.19.0</turbine.log4j2.version>
+    <turbine.log4j2.version>2.20.0</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
     <!-- disable by default, added profile owasp, which enables it  -->
