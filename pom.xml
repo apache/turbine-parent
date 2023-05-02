@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>27</version>
+    <version>29</version>
     <relativePath />
   </parent>
   <groupId>org.apache.turbine</groupId>
@@ -210,7 +210,7 @@
         <plugin>
             <groupId>org.cyclonedx</groupId>
             <artifactId>cyclonedx-maven-plugin</artifactId>
-            <version>2.7.4</version>
+            <version>2.7.8</version>
           </plugin>
       </plugins>
     </pluginManagement>
@@ -510,6 +510,9 @@
                 <phase>package</phase>
               </execution>
             </executions>
+            <configuration>
+                 <outputName>${artifactId}-${version}-bom</outputName>
+            </configuration>
           </plugin>
         </plugins>
       </build>
@@ -605,6 +608,7 @@
       <properties>
         <java.version>12</java.version>
         <turbine.compiler.compilerVersion>12</turbine.compiler.compilerVersion>
+        <maven.compiler.target>12</maven.compiler.target>
         <maven.compiler.release>12</maven.compiler.release>
       </properties>
     </profile>
@@ -644,6 +648,7 @@
     <!-- Default configuration for compiler source and target JVM -->
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.release>11</maven.compiler.release>
     <java.version>11</java.version>
 
     <!-- Compiler and surefire plugin settings for "java" profiles, maven.compiler.* is now different from compilerVersion, which 

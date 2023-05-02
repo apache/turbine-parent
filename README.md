@@ -43,3 +43,8 @@ Since v10
 Since v11
 
 - Requires Java 11 minimal.
+
+Since v12
+
+- Exclude jacoco if jvm > 18, 
+- Add cyclonedx for apache-release
