@@ -231,16 +231,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <!-- generate the IntelliJ project files -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-idea-plugin</artifactId>
-        <version>2.2.1</version>
-        <configuration>
-          <jdkLevel>${maven.compile.source}</jdkLevel>
-          <downloadSources>true</downloadSources>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
@@ -343,7 +333,7 @@
         <!-- generate the PMD reports -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.15.0</version>
+        <version>3.21.0</version>
         <configuration>
           <minimumTokens>200</minimumTokens>
           <!--linkXref>true</linkXref -->
