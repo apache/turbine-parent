@@ -583,7 +583,7 @@
             <plugin>
                  <groupId>com.github.spotbugs</groupId>
                   <artifactId>spotbugs-maven-plugin</artifactId>
-                  <version>4.7.2.1</version>
+                  <version>4.7.3.6</version>
                   <configuration>
                   </configuration>
              </plugin>
@@ -654,7 +654,7 @@
     <turbine.surefire.version>3.0.0-M5</turbine.surefire.version>
     <turbine.surefire-report.version>3.0.0-M5</turbine.surefire-report.version>
     <turbine.javadoc.version>3.4.1</turbine.javadoc.version>
-    <turbine.rat.version>0.14</turbine.rat.version>
+    <turbine.rat.version>0.15</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>
     <turbine.jxr.version>3.1.1</turbine.jxr.version>
     <turbine.project-info.version>3.2.2</turbine.project-info.version>
@@ -662,7 +662,7 @@
         turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom : turbine.site.version>3.9.1</turbine.site.version -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
     <turbine.jacoco.version>0.8.8</turbine.jacoco.version>
-    <turbine.dependency.check.version>7.1.2</turbine.dependency.check.version>
+    <turbine.dependency.check.version>8.4.0</turbine.dependency.check.version>
     <!-- may replace local settings -->
     <turbine.log4j2.version>2.20.0</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
