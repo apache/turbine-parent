@@ -159,7 +159,6 @@
         <!-- jacoco agent may block gpg agent ? -->
         <!-- Be aware, as we exclude tests itself, jacoco only starts, if 
           not skipping tests, as it is a coverage tool! 
-          jacoco 0.8.8 does not support java version 18 and beyyond
           -->
         <plugin>
           <groupId>org.jacoco</groupId>
@@ -605,9 +604,6 @@
     </profile-->
     <profile>
       <id>javaBugsUpdate4Jacoco</id>
-      <activation>
-        <jdk>[19,)</jdk>
-      </activation>
       <properties>
         <jacoco.skip>true</jacoco.skip>
       </properties>
@@ -661,7 +657,7 @@
     <!-- unused :
         turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom : turbine.site.version>3.9.1</turbine.site.version -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
-    <turbine.jacoco.version>0.8.8</turbine.jacoco.version>
+    <turbine.jacoco.version>0.8.11</turbine.jacoco.version>
     <turbine.dependency.check.version>8.4.0</turbine.dependency.check.version>
     <!-- may replace local settings -->
     <turbine.log4j2.version>2.20.0</turbine.log4j2.version>
