@@ -128,6 +128,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
+          <version>4.0.0-M12</version><!-- override apache.org, required by fluido v2.0.0-M8 in site.xml -->
           <configuration>
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
@@ -642,7 +643,9 @@
           requires to fork -->
     <turbine.compiler.fork>true</turbine.compiler.fork>
     <turbine.compiler.compilerVersion>11</turbine.compiler.compilerVersion>
+    <!--suppress UnresolvedMavenProperty -->
     <turbine.compiler.javac>${JAVA_HOME}/bin/javac</turbine.compiler.javac>
+    <!--suppress UnresolvedMavenProperty -->
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
@@ -686,6 +689,7 @@
     <!-- build meta inf -->
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
     <!-- requires build plugin -->
+    <!--suppress UnresolvedMavenProperty -->
     <implementation.build>${scmBranch}@r${buildNumber};${maven.build.timestamp}</implementation.build>
 
     <!-- scm publish plugin configuration -->
