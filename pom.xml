@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>29</version>
+    <version>32</version>
     <relativePath />
   </parent>
   <groupId>org.apache.turbine</groupId>
@@ -211,6 +211,21 @@
             <groupId>org.cyclonedx</groupId>
             <artifactId>cyclonedx-maven-plugin</artifactId>
             <version>2.7.8</version>
+         </plugin>
+         <plugin>
+            <groupId>org.apache.rat</groupId>
+            <artifactId>apache-rat-plugin</artifactId>
+            <version>${turbine.rat.version}</version>
+            <configuration>
+                <excludes>
+                  <exclude>xdocs/images/*</exclude>
+                  <exclude>src/site/**</exclude>
+                  <exclude>proposals/**</exclude>
+                  <exclude>extensions/**</exclude>
+                  <exclude>conf/**</exclude>
+                  <exclude>README.md</exclude>
+                </excludes>
+              </configuration>
           </plugin>
       </plugins>
     </pluginManagement>
@@ -333,7 +348,7 @@
         <!-- generate the PMD reports -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.21.0</version>
+        <version>3.21.2</version>
         <configuration>
           <minimumTokens>200</minimumTokens>
           <!--linkXref>true</linkXref -->
@@ -634,15 +649,15 @@
      <project.build.outputTimestamp>1683019490</project.build.outputTimestamp>
 
     <!-- Default configuration for compiler source and target JVM -->
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.release>11</maven.compiler.release>
-    <java.version>11</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.release>17</maven.compiler.release>
+    <java.version>17</java.version>
 
     <!-- Compiler and surefire plugin settings for "java" profiles, maven.compiler.* is now different from compilerVersion, which 
           requires to fork -->
     <turbine.compiler.fork>true</turbine.compiler.fork>
-    <turbine.compiler.compilerVersion>11</turbine.compiler.compilerVersion>
+    <turbine.compiler.compilerVersion>17</turbine.compiler.compilerVersion>
     <!--suppress UnresolvedMavenProperty -->
     <turbine.compiler.javac>${JAVA_HOME}/bin/javac</turbine.compiler.javac>
     <!--suppress UnresolvedMavenProperty -->
@@ -650,10 +665,10 @@
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
     <turbine.compiler.version>3.10.1</turbine.compiler.version>
-    <turbine.surefire.version>3.0.0-M5</turbine.surefire.version>
+    <turbine.surefire.version>3.2.5</turbine.surefire.version>
     <turbine.surefire-report.version>3.0.0-M5</turbine.surefire-report.version>
-    <turbine.javadoc.version>3.4.1</turbine.javadoc.version>
-    <turbine.rat.version>0.15</turbine.rat.version>
+    <turbine.javadoc.version>3.6.3</turbine.javadoc.version>
+    <turbine.rat.version>0.16</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>
     <turbine.jxr.version>3.1.1</turbine.jxr.version>
     <turbine.project-info.version>3.2.2</turbine.project-info.version>
@@ -663,7 +678,7 @@
     <turbine.jacoco.version>0.8.11</turbine.jacoco.version>
     <turbine.dependency.check.version>8.4.0</turbine.dependency.check.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.20.0</turbine.log4j2.version>
+    <turbine.log4j2.version>2.23.1</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
     <!-- disable by default, added profile owasp, which enables it  -->
@@ -680,11 +695,11 @@
     <project.build.sourceEncoding>${turbine.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${turbine.encoding}</project.reporting.outputEncoding>
 
-    <!-- Javadoc link to Java API. Default is Java 1.8; components can override 
-      to other versions -->
-    <turbine.javadoc.java.link>https://docs.oracle.com/javase/8/docs/api/</turbine.javadoc.java.link>
-    <!-- servlet 3.1, websocket, JSR-342 -->
-    <turbine.javadoc.javaee.link>https://docs.oracle.com/javaee/7/api/</turbine.javadoc.javaee.link>
+    <!-- Javadoc link to Java API. Default is Java 11; components can override to other versions -->
+    <turbine.javadoc.java.link>https://docs.oracle.com/javase/17/docs/api/</turbine.javadoc.java.link>
+    
+    <!-- Jakarta 11: Servlet 6.1, JSP 4.0, EL 6.0, WebSocket 2.2 and Authentication 3.1 -->
+    <turbine.javadoc.javaee.link>https://jakarta.ee/specifications/platform/11/</turbine.javadoc.javaee.link>
 
     <!-- build meta inf -->
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>

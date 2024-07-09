@@ -9,9 +9,11 @@ This is the parent for Turbine-Core, Site and most of Fulcrum components and inh
 
 - Based on last released [commons parent versions](http://svn.apache.org/repos/asf/commons/proper/commons-parent/trunk).
 
+- Base on [ASF parent pom](https://maven.apache.org/pom/asf/index.html)
+
 ### CAVEAT
 
-- Check turbine-parent-assembly module dependency, which overwrites Apache module (still needed in 2017)
+- Check turbine-parent-assembly module dependency, which overwrites Apache module (still needed in 2024?)
 
 - Check versions with Maven Versions Plugin:
 
