@@ -101,13 +101,11 @@
           <configuration>
             <!-- keep only errors and warnings -->
             <quiet>true</quiet>
-            <source>8</source>
             <encoding>${turbine.encoding}</encoding>
             <docencoding>${turbine.docEncoding}</docencoding>
             <notimestamp>true</notimestamp>
             <links>
               <link>${turbine.javadoc.java.link}</link>
-              <link>${turbine.javadoc.javaee.link}</link>
             </links>
             <archive>
               <manifest>
@@ -128,7 +126,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>4.0.0-M12</version><!-- override apache.org, required by fluido v2.0.0-M8 in site.xml -->
+          <version>4.0.0-M16</version><!-- override apache.org, required by fluido v2.0.0-M8 in site.xml -->
           <configuration>
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
@@ -200,7 +198,7 @@
               <configuration>
                 <rules>
                   <requireMavenVersion>
-                    <version>3.3.9</version>
+                    <version>3.9.6</version>
                   </requireMavenVersion>
                 </rules>
               </configuration>
@@ -210,7 +208,7 @@
         <plugin>
             <groupId>org.cyclonedx</groupId>
             <artifactId>cyclonedx-maven-plugin</artifactId>
-            <version>2.7.8</version>
+            <version>2.8.0</version>
          </plugin>
          <plugin>
             <groupId>org.apache.rat</groupId>
@@ -335,7 +333,6 @@
           <linksource>true</linksource>
           <links>
             <link>${turbine.javadoc.java.link}</link>
-            <link>${turbine.javadoc.javaee.link}</link>
           </links>
         </configuration>
       </plugin>
@@ -348,7 +345,7 @@
         <!-- generate the PMD reports -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.21.2</version>
+        <version>3.24.0</version>
         <configuration>
           <minimumTokens>200</minimumTokens>
           <!--linkXref>true</linkXref -->
@@ -395,11 +392,12 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${turbine.jacoco.version}</version>
       </plugin>
-      <plugin>
+      <!-- 2024: wait for 2.1 as java above 7 is mot supported and breaks generation, it's removed from common-parents also. -->
+      <!--plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
         <version>2.0</version>
-      </plugin>
+      </plugin-->
       <plugin>
         <!-- check the Apache Licence in all source files -->
         <groupId>org.apache.rat</groupId>
@@ -410,7 +408,7 @@
         <!-- generate the tag list report -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0</version>
       </plugin>
     </plugins>
   </reporting>
@@ -598,7 +596,7 @@
             <plugin>
                  <groupId>com.github.spotbugs</groupId>
                   <artifactId>spotbugs-maven-plugin</artifactId>
-                  <version>4.7.3.6</version>
+                  <version>4.8.6.2</version>
                   <configuration>
                   </configuration>
              </plugin>
@@ -664,19 +662,18 @@
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.compiler.version>3.10.1</turbine.compiler.version>
-    <turbine.surefire.version>3.2.5</turbine.surefire.version>
-    <turbine.surefire-report.version>3.0.0-M5</turbine.surefire-report.version>
-    <turbine.javadoc.version>3.6.3</turbine.javadoc.version>
+    <turbine.compiler.version>3.13.0</turbine.compiler.version>
+    <turbine.surefire.version>3.3.1</turbine.surefire.version>
+    <turbine.javadoc.version>3.8.0</turbine.javadoc.version>
     <turbine.rat.version>0.16</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>
-    <turbine.jxr.version>3.1.1</turbine.jxr.version>
+    <turbine.jxr.version>3.3.2</turbine.jxr.version>
     <turbine.project-info.version>3.2.2</turbine.project-info.version>
     <!-- unused :
         turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom : turbine.site.version>3.9.1</turbine.site.version -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
-    <turbine.jacoco.version>0.8.11</turbine.jacoco.version>
-    <turbine.dependency.check.version>8.4.0</turbine.dependency.check.version>
+    <turbine.jacoco.version>0.8.12</turbine.jacoco.version>
+    <turbine.dependency.check.version>9.2.0</turbine.dependency.check.version>
     <!-- may replace local settings -->
     <turbine.log4j2.version>2.23.1</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
@@ -698,8 +695,8 @@
     <!-- Javadoc link to Java API. Default is Java 11; components can override to other versions -->
     <turbine.javadoc.java.link>https://docs.oracle.com/javase/17/docs/api/</turbine.javadoc.java.link>
     
-    <!-- Jakarta 11: Servlet 6.1, JSP 4.0, EL 6.0, WebSocket 2.2 and Authentication 3.1 -->
-    <turbine.javadoc.javaee.link>https://jakarta.ee/specifications/platform/11/</turbine.javadoc.javaee.link>
+    <!-- Jakarta 11: Servlet 6.1, JSP 4.0, EL 6.0, WebSocket 2.2 and Authentication 3.1  - not used as it does not containt element-list -->
+    <!--turbine.javadoc.javaee.link>https://jakarta.ee/specifications/platform/11/</turbine.javadoc.javaee.link-->
 
     <!-- build meta inf -->
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
