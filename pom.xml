@@ -643,12 +643,12 @@
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
     <turbine.compiler.version>3.13.0</turbine.compiler.version>
-    <turbine.surefire.version>3.3.1</turbine.surefire.version>
+    <turbine.surefire.version>3.5.0</turbine.surefire.version>
     <turbine.javadoc.version>3.10.0</turbine.javadoc.version>
     <turbine.rat.version>0.16</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>
     <turbine.jxr.version>3.3.2</turbine.jxr.version>
-    <turbine.project-info.version>3.2.2</turbine.project-info.version>
+    <turbine.project-info.version>3.7.0</turbine.project-info.version>
     <!-- unused :
         turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom : turbine.site.version>3.9.1</turbine.site.version -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
