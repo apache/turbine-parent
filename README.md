@@ -5,11 +5,11 @@ This is the parent for Turbine-Core, Site and most of Fulcrum components and inh
 
 ## USAGE
 
-- Parent module to align dependencies in Fulcrum nand Turbine
+- Parent module to align dependencies in Fulcrum and Turbine modules
 
-- Based on last released [commons parent versions](http://svn.apache.org/repos/asf/commons/proper/commons-parent/trunk).
+- Based on last released [commons parent versions](https://commons.apache.org/proper/commons-parent/).
 
-- Base on [ASF parent pom](https://maven.apache.org/pom/asf/index.html)
+- Based on [ASF parent pom](https://maven.apache.org/pom/asf/index.html)
 
 ### CAVEAT
 
@@ -30,7 +30,7 @@ run to check separately:
 
 ## RELEASE
 
-- Normally, this module (and turbine-parent-assembly) could be released lazily (add [LAZY][VOTE] in release voting phase).
+- This module as any Apache release has to use the [VOTE] release voting phase, in this case in the Turbine dev mailing list.
 
 ### Notes 
 
@@ -50,3 +50,7 @@ Since v12
 
 - Exclude jacoco if jvm > 18, 
 - Add cyclonedx for apache-release
+
+Since v13
+
+- Requires Java 17
