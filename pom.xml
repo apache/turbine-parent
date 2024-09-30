@@ -126,7 +126,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>4.0.0-M16</version><!-- override apache.org, required by fluido v2.0.0-M8 in site.xml -->
+          <version>4.0.0-M16</version><!-- override apache.org, required by fluido v2.0.0-M10 in site.xml -->
           <configuration>
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
@@ -590,7 +590,7 @@
             <plugin>
                  <groupId>com.github.spotbugs</groupId>
                   <artifactId>spotbugs-maven-plugin</artifactId>
-                  <version>4.8.6.2</version>
+                  <version>4.8.6.4</version>
                   <configuration>
                   </configuration>
              </plugin>
