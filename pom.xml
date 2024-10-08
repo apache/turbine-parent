@@ -131,6 +131,14 @@
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
           </configuration>
+           <executions>
+                <execution>
+                  <id>inherit-parent-site</id>
+                  <goals>
+                    <goal>attach-descriptor</goal>
+                  </goals>
+                </execution>
+              </executions>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

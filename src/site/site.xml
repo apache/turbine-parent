@@ -19,20 +19,27 @@
 -->
 <site xmlns="http://maven.apache.org/SITE/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SITE/2.0.0 https://maven.apache.org/xsd/site-2.0.0.xsd"
-  name="Apache Turbine">  
-
-  <bannerLeft href="https://turbine.apache.org/" target="_blank">
+  name="Apache Turbine" combine.self="merge"> 
+  
+   <bannerLeft href="https://turbine.apache.org/">
     <image src="https://turbine.apache.org/images/turbine-project.png" alt="Apache Turbine" />
   </bannerLeft>
-  <publishDate format="dd MMMM yyyy" position="left" />
-  <version position="left" />
-  <skin>
+
+   <bannerRight href="https://turbine.apache.org/">
+       <image src="http://turbine.apache.org/images/logo.gif" />
+   </bannerRight>
+    
+   <publishDate format="dd MMMM yyyy" position="left" />
+   <version position="left" />
+    
+   <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
-        <version>2.0.0-M10</version>
-  </skin>
-  <body>
-    <head></head>
+         <version>2.0.0-M11</version>
+    </skin>
+   <body>
+    <head/>
+    
     <links>
       <item name="Apache"  href="https://www.apache.org"/>
       <item name="Turbine" href="https://turbine.apache.org/" />  
