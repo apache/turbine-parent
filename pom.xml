@@ -131,14 +131,14 @@
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
           </configuration>
-           <executions>
+          <executions>
                 <execution>
                   <id>inherit-parent-site</id>
                   <goals>
                     <goal>attach-descriptor</goal>
                   </goals>
                 </execution>
-              </executions>
+           </executions>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -400,12 +400,11 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${turbine.jacoco.version}</version>
       </plugin>
-      <!-- 2024: wait for 2.1 as java above 7 is mot supported and breaks generation, it's removed from common-parents also. -->
-      <!--plugin>
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
-        <version>2.0</version>
-      </plugin-->
+        <version>2.1</version>
+      </plugin>
       <plugin>
         <!-- check the Apache Licence in all source files -->
         <groupId>org.apache.rat</groupId>
