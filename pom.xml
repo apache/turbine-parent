@@ -162,11 +162,8 @@
             <artifactId>dependency-check-maven</artifactId>
             <version>${turbine.dependency.check.version}</version>
          </plugin>
-        <!-- jacoco is since java 8 enabled by default -->
-        <!-- jacoco agent may block gpg agent ? -->
-        <!-- Be aware, as we exclude tests itself, jacoco only starts, if 
-          not skipping tests, as it is a coverage tool! 
-          -->
+        <!--   Be aware, as we exclude tests itself, jacoco only starts, if 
+          not skipping tests, as it is a coverage tool!         -->
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
@@ -522,7 +519,14 @@
       </build>
     </profile>    
     <profile>    
-       <!-- run in profile or optionally, use not as reporting plugin, as 
+       <!-- 
+          Since 2024 an NVI key is required and upgrading to 10.0.2 or later is mandatory:
+          
+          "[WARNING] An NVD API Key was not provided - it is highly recommended to use an NVD API key as the update can take a VERY long time without an API Key"
+
+          See https://github.com/jeremylong/DependencyCheck.
+          
+          Run in profile or optionally, use not as reporting plugin, as 
           it exposes file paths to artifacts and check each possible vulnerability 
           carefully, find more info about how to read, false positives et al. here: 
           https://jeremylong.github.io/DependencyCheck/dependency-check-maven/plugin-info.html 
@@ -538,13 +542,15 @@
             <value>!true</value>
          </property>
       </activation>
+       <properties>
+          <dependency.check.skip>false</dependency.check.skip>
+      </properties>
       <build>
             <plugins>
                 <plugin>
                   <groupId>org.owasp</groupId>
                   <artifactId>dependency-check-maven</artifactId>
-                  <!-- Find all configuration parameters here: https://jeremylong.github.io/DependencyCheck/dependency-check-maven/.
-                  -->
+                  <!-- Find all configuration parameters here: https://jeremylong.github.io/DependencyCheck/dependency-check-maven/.    -->
                   <executions>
                     <execution>
                       <goals>
@@ -660,7 +666,7 @@
         turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom : turbine.site.version>3.9.1</turbine.site.version -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
     <turbine.jacoco.version>0.8.12</turbine.jacoco.version>
-    <turbine.dependency.check.version>9.2.0</turbine.dependency.check.version>
+    <turbine.dependency.check.version>10.0.2</turbine.dependency.check.version>
     <!-- may replace local settings -->
     <turbine.log4j2.version>2.23.1</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
