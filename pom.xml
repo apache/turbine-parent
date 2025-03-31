@@ -126,7 +126,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>4.0.0-M16</version><!-- override apache.org, required by fluido v2.0.0-M10 in site.xml -->
+          <version>3.21.0</version><!-- 4.x versions are for mvn 4.x; override apache.org, required by fluido v2.1.0 in site.xml -->
           <configuration>
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
@@ -536,13 +536,7 @@
           $>mvn org.owasp:dependency-check-maven:check 
        -->
       <id>owasp</id>
-      <activation>
-        <property>
-            <name>dependency.check.skip</name>
-            <value>!true</value>
-         </property>
-      </activation>
-       <properties>
+      <properties>
           <dependency.check.skip>false</dependency.check.skip>
       </properties>
       <build>
