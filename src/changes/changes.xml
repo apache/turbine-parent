@@ -26,16 +26,21 @@
   <body>
   <release version="14-SNAPSHOT" date="in version control">
       <action dev="gk" type="fix" >
-         -  site plugin use inheritance with goal attach-descriptor
+         -  Allow only explicit activation of profile owasp.
         </action>
-       <action dev="gk" type="update" >
-          Update deps: jdepend to 2.1, surefire to 3.5.0, project-info to 3.7.0.
-        </action>
+      <action dev="gk" type="fix" >
+         -  Site plugin use inheritance with goal attach-descriptor
+      </action>
+      <action dev="gk" type="update" >
+          Update deps: jdepend to 2.1, maven surefire to 3.5.3, compiler 3.14.0, javadoc 3.11.2, project-info to 3.9.0, jxr 3.6.0, site plugin to 3.21.0, fluido-skin to 2.1.0 (in site.xml), rat plugin 0.16.1.
+          Update parent: apache pom to v34
+          Update log4j2 to 2.24.3
+      </action>
   </release>
   <release version="13" date="2024-11-09">
        <action dev="gk" type="update" >
          Update plugins javadoc to 3.10.0, cyclonedc to 2.8.1, enforcer to 3.5.0, maven-pmd-plugin to 3.21.0, spotbugs-maven-plugin to 4.7.3.6, maven-site-plugin to 4.0.0-M16, pmd 3.21.2, surefire to 3.2.5, rat to 0.16, jacoco to 0.8.11,
-         Set turbine.log4j2.version  to to 2.23.1, Set required Maven version to 3.9.3 (requires Java 8), Remove(automatic) java based activation of profile javaBugsUpdate4Jacoco, removed profile for java > 12
+         Set turbine.log4j2.version  to 2.23.1, Set required Maven version to 3.9.3 (requires Java 8), Remove (automatic) java based activation of profile javaBugsUpdate4Jacoco, removed profile for java > 12
          Update parent apache pom to v33, Remove deprecate parameter compilerVersion for compile plugin.
         </action>
         <action type="update" dev="gk">
