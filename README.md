@@ -54,3 +54,7 @@ Since v12
 Since v13
 
 - Requires Java 17
+
+Since v15
+
+- Requires Java 21

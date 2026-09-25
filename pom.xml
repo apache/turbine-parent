@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>35</version>
+    <version>40</version>
     <relativePath />
   </parent>
   <groupId>org.apache.turbine</groupId>
@@ -126,7 +126,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.21.0</version><!-- 4.x versions are for mvn 4.x; override apache.org, required by fluido v2.1.0 in site.xml -->
+          <version>3.22.0</version><!-- 4.x versions are for mvn 4.x; override apache.org, required by fluido v2.1.0 in site.xml -->
           <configuration>
             <!-- don't deploy site with maven-site-plugin -->
             <skipDeploy>true</skipDeploy>
@@ -193,7 +193,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.5.0</version>
+          <version>3.6.3</version>
           <executions>
             <execution>
               <id>enforce-maven</id>
@@ -213,7 +213,7 @@
         <plugin>
             <groupId>org.cyclonedx</groupId>
             <artifactId>cyclonedx-maven-plugin</artifactId>
-            <version>2.8.1</version>
+            <version>2.9.3</version>
          </plugin>
          <plugin>
             <groupId>org.apache.rat</groupId>
@@ -350,7 +350,7 @@
         <!-- generate the PMD reports -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.24.0</version>
+        <version>3.28.0</version>
         <configuration>
           <minimumTokens>200</minimumTokens>
           <!--linkXref>true</linkXref -->
@@ -400,7 +400,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
-        <version>2.1</version>
+        <version>2.2.0</version>
       </plugin>
       <plugin>
         <!-- check the Apache Licence in all source files -->
@@ -412,7 +412,7 @@
         <!-- generate the tag list report -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.2</version>
       </plugin>
     </plugins>
   </reporting>
@@ -597,7 +597,7 @@
             <plugin>
                  <groupId>com.github.spotbugs</groupId>
                   <artifactId>spotbugs-maven-plugin</artifactId>
-                  <version>4.8.6.4</version>
+                  <version>4.10.4.1</version>
                   <configuration>
                   </configuration>
              </plugin>
@@ -635,10 +635,10 @@
      <project.build.outputTimestamp>1743506245</project.build.outputTimestamp>
 
     <!-- Default configuration for compiler source and target JVM -->
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <maven.compiler.release>17</maven.compiler.release>
-    <java.version>17</java.version>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.release>21</maven.compiler.release>
+    <java.version>21</java.version>
 
     <!-- Compiler and surefire plugin settings for "java" profiles, maven.compiler.* is now different from compilerVersion, which 
           requires to fork -->
@@ -649,20 +649,20 @@
     <turbine.surefire.java>${JAVA_HOME}/bin/java</turbine.surefire.java>
 
     <!-- Plugin versions (allows same value in reporting and build sections) -->
-    <turbine.compiler.version>3.14.0</turbine.compiler.version>
-    <turbine.surefire.version>3.5.3</turbine.surefire.version>
-    <turbine.javadoc.version>3.11.2</turbine.javadoc.version>
-    <turbine.rat.version>0.16.1</turbine.rat.version>
+    <turbine.compiler.version>3.16.0</turbine.compiler.version>
+    <turbine.surefire.version>3.6.0</turbine.surefire.version>
+    <turbine.javadoc.version>3.12.0</turbine.javadoc.version>
+    <turbine.rat.version>0.18</turbine.rat.version>
     <turbine.changes.version>2.12.1</turbine.changes.version>
     <turbine.jxr.version>3.6.0</turbine.jxr.version>
     <turbine.project-info.version>3.9.0</turbine.project-info.version>
     <!-- unused :
         turbine.wagon-ssh.version>3.4.3</turbine.wagon-ssh.version as in apache pom : turbine.site.version>3.9.1</turbine.site.version -->
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
-    <turbine.jacoco.version>0.8.12</turbine.jacoco.version>
-    <turbine.dependency.check.version>10.0.4</turbine.dependency.check.version>
+    <turbine.jacoco.version>0.8.15</turbine.jacoco.version>
+    <turbine.dependency.check.version>13.0.0</turbine.dependency.check.version>
     <!-- may replace local settings -->
-    <turbine.log4j2.version>2.24.3</turbine.log4j2.version>
+    <turbine.log4j2.version>2.26.1</turbine.log4j2.version>
     <jacoco.skip>false</jacoco.skip>
     <cobertura.skip>true</cobertura.skip>
     <!-- disable by default, added profile owasp, which enables it  -->
