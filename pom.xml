@@ -317,7 +317,7 @@
         <reportSets>
           <reportSet>
             <reports>
-              <report>changes-report</report>
+              <report>changes</report>
             </reports>
           </reportSet>
         </reportSets>
@@ -653,10 +653,10 @@
     <turbine.compiler.version>${version.maven-compiler-plugin}</turbine.compiler.version>
     <turbine.surefire.version>${surefire.version}</turbine.surefire.version>
     <turbine.javadoc.version>${version.maven-javadoc-plugin}</turbine.javadoc.version>
-    <turbine.rat.version>${version.apache-rat-plugin}</turbine.rat.version>>
+    <turbine.rat.version>${version.apache-rat-plugin}</turbine.rat.version>
     <turbine.project-info.version>${version.maven-project-info-reports-plugin}</turbine.project-info.version>
     
-    <turbine.changes.version>2.12.1</turbine.changes.version>
+    <turbine.changes.version>3.0.0-M3</turbine.changes.version>
     <turbine.jxr.version>3.6.0</turbine.jxr.version>
     <turbine.findbugs.version>3.0.5</turbine.findbugs.version>
     <turbine.jacoco.version>0.8.15</turbine.jacoco.version>
@@ -681,7 +681,7 @@
     <project.reporting.outputEncoding>${turbine.encoding}</project.reporting.outputEncoding>
 
     <!-- Javadoc link to Java API. Default is Java 11; components can override to other versions -->
-    <turbine.javadoc.java.link>https://docs.oracle.com/javase/17/docs/api/</turbine.javadoc.java.link>
+    <turbine.javadoc.java.link>https://docs.oracle.com/en/java/javase/21/</turbine.javadoc.java.link>
     
     <!-- Jakarta 11: Servlet 6.1, JSP 4.0, EL 6.0, WebSocket 2.2 and Authentication 3.1  - not used as it does not containt element-list -->
     <!--turbine.javadoc.javaee.link>https://jakarta.ee/specifications/platform/11/</turbine.javadoc.javaee.link-->
